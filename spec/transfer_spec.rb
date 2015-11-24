@@ -37,7 +37,7 @@ describe 'Transfer' do
 
       it "calls on the sender and reciever's #valid? methods" do
         transfer_class = File.read("lib/transfer.rb")
-        expect(transfer_class.scan(/sender.valid\? \&\& receiver.valid\?/).length).to eq 1
+        expect(transfer_class.scan(/sender.valid\? \&\& receiver.valid\?/).length).to eq (1)
       end
     end
 
