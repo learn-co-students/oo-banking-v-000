@@ -12,11 +12,7 @@ class Transfer
   end
 
   def both_valid?
-    # binding.pry
     sender.valid? && receiver.valid? ? true : self.status = "rejected"
-
-    #works just fine like this, so long as "sender" & "receiver"
-    #are objects of class BankAcount
     #meaning if the Transfer's initialized with just a string, 
     #this will reject it, b/c it's not checking for that string.
     #will need to update #valid? to check for string 
@@ -24,22 +20,13 @@ class Transfer
   end
 
   def execute_transaction
-    if self.both_valid? && (self.status = "pending")
-      binding.pry
+    if self.both_valid? && (self.status == "pending") && sender.balance >= self.amount
       sender.deposit(-amount)
       receiver.deposit(amount)
       self.status = "complete"
     else
-      reject._transfer
+      self.reject_transfer
     end
-    binding.pry
-    #This takes the result of #both_valid? and: 
-      #1. checks that transfer.status == "pending"
-      #2. debits sender's acct
-      #3. credits receiver's acct
-      #4. changes transfer.status to either "executed" or "rejected"
-    #
-
   end
 
   def reject_transfer
@@ -47,14 +34,17 @@ class Transfer
     "Transaction rejected. Please check your account balance."
   end
 
-  def reverse_transaction
-    if self.status == "completed"
+  def reverse_transfer
+    # binding.pry
+    if self.status == "complete"
       receiver.deposit(-amount)
       sender.deposit(amount)
       self.status = "reversed"
     else
       reject_transfer
     end
+
+    # binding.pry
   end
 
 end
