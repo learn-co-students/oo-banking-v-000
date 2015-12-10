@@ -35,7 +35,6 @@ class Transfer
   end
 
   def reverse_transfer
-    # binding.pry
     if self.status == "complete"
       receiver.deposit(-amount)
       sender.deposit(amount)
@@ -43,8 +42,6 @@ class Transfer
     else
       reject_transfer
     end
-
-    # binding.pry
   end
 
 end

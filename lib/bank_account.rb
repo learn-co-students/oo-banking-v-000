@@ -24,13 +24,12 @@ class BankAccount
   end
 
   def valid?
-    # binding.pry
     ACCOUNTS.include?(self) && (status == "open") && balance > 0
     #this doesn't evaluate the transaction itself
     # #both_valid? iterates, sends one acct at a time here
     #only evaluates each individual account, 
     #called by Transfer.both_valid?
-    #checks: 1. Account exits, 2. Account status == "open" 3. Account balance >= 0
+    #will throw false error when called w/just a string, passes current tests
 
   end
 
