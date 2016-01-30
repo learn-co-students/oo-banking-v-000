@@ -13,13 +13,12 @@ class Transfer
   def both_valid?
     sender.valid? && receiver.valid? 
     #why does this not work with @sender and @receiver
-    
   end
 
   def execute_transaction
     if both_valid? && @sender.balance > amount && @status == "pending"
-    @sender.balance -= @amount
-    @receiver.balance += @amount
+    sender.balance -= @amount
+    receiver.balance += @amount
     @status = "complete"
     else
       reject_transfer
@@ -33,8 +32,8 @@ class Transfer
 
   def reverse_transfer
     if both_valid? && @receiver.balance > amount && @status == "complete"
-    @sender.balance += @amount
-    @receiver.balance -= @amount
+    sender.balance += @amount
+    receiver.balance -= @amount
     @status = "reversed"
     else
       reject_transfer
