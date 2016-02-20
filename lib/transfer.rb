@@ -27,7 +27,7 @@ attr_accessor:sender,:receiver,:status,:amount
 
 
   def reject_transfer
-    if @sender.valid? == false && @sender.balance < @amount
+    if @sender.valid? == false || @sender.balance < @amount
       @status = "rejected"
       "Transaction rejected. Please check your account balance."
     end
