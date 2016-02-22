@@ -1,4 +1,4 @@
-describe 'Transfer' do 
+describe 'Transfer' do
 
   let(:avi) { BankAccount.new("Avi") }
   let(:amanda) { BankAccount.new("Amanda") }
@@ -11,11 +11,11 @@ describe 'Transfer' do
         expect(transfer).to be_a(Transfer)
       end
 
-      it "initializes with a sender" do 
+      it "initializes with a sender" do
         expect(transfer.sender).to eq(amanda)
       end
 
-      it "initializes with a receiver" do 
+      it "initializes with a receiver" do
         expect(transfer.receiver).to eq(avi)
       end
 
@@ -23,7 +23,7 @@ describe 'Transfer' do
         expect(transfer.status).to eq("pending")
       end
 
-      it "initializes with a transfer amount" do 
+      it "initializes with a transfer amount" do
         expect(transfer.amount).to eq(50)
       end
     end
@@ -31,7 +31,7 @@ describe 'Transfer' do
     describe '#both_valid?' do
       it "can check that both accounts are valid" do
         expect(avi.valid?).to eq (true)
-        expect(amanda.valid?).to eq(true) 
+        expect(amanda.valid?).to eq(true)
         expect(transfer.both_valid?).to eq(true)
       end
 
@@ -42,14 +42,14 @@ describe 'Transfer' do
     end
 
     describe '#execute_transaction' do
-      it "can execute a successful transaction between two accounts" do 
+      it "can execute a successful transaction between two accounts" do
         transfer.execute_transaction
         expect(amanda.balance).to eq(950)
         expect(avi.balance).to eq(1050)
         expect(transfer.status).to eq("complete")
       end
 
-      it "each transfer can only happen once" do 
+      it "each transfer can only happen once" do
         transfer.execute_transaction
         expect(amanda.balance).to eq(950)
         expect(avi.balance).to eq(1050)
