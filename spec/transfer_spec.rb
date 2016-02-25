@@ -1,3 +1,4 @@
+require 'pry'
 describe 'Transfer' do 
 
   let(:avi) { BankAccount.new("Avi") }
@@ -37,7 +38,11 @@ describe 'Transfer' do
 
       it "calls on the sender and reciever's #valid? methods" do
         transfer_class = File.read("lib/transfer.rb")
-        expect(transfer_class.scan(/sender.valid\? \&\& receiver.valid\?/).length).to eq 1
+
+        expect(amanda).to receive(:valid?).and_return(true)
+        expect(avi).to receive(:valid?).and_return(true)
+
+        transfer.both_valid?
       end
     end
 
