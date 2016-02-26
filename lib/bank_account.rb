@@ -1,4 +1,5 @@
 class BankAccount
+
   attr_reader :name
   attr_accessor :balance, :status
 
@@ -21,7 +22,11 @@ class BankAccount
   end
 
   def valid?
-    balance > 0 && status == "open"
+    if @status == "open" && @balance > 0
+      return true
+    else
+      return false
+    end
   end
 
 end
