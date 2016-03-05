@@ -2,6 +2,8 @@
 
 ## Objective
 
+NOTE: When I forked this lab, all my tests passed automatically. I think somehow the solution code may have been put in the learning code section.. 
+
 1. Use TDD to code two classes that interact with each other. 
 
 ## Description
