@@ -1,40 +1,49 @@
 class Transfer
-  attr_reader :amount, :sender, :receiver
-  attr_accessor :status
+  attr_accessor :receiver, :status, :amount, :sender
+
 
   def initialize(sender, receiver, amount)
-    @status = "pending"
     @sender = sender
     @receiver = receiver
+    @status = "pending"
     @amount = amount
   end
 
   def both_valid?
-    sender.valid? && receiver.valid?
-  end
-
-  def execute_transaction
-    if both_valid? && sender.balance > amount && self.status == "pending"
-      sender.balance -= amount
-      receiver.balance += amount
-      self.status = "complete"
+    if @sender.valid? && @receiver.valid?
+      true
     else
-      reject_transfer
+      false
     end
   end
 
-  def reverse_transfer
-    if both_valid? && receiver.balance > amount && self.status == "complete"
-      receiver.balance -= amount
-      sender.balance += amount
-      self.status = "reversed"
+  def execute_transaction
+    if both_valid? && @status != "complete"
+      @sender.balance = @sender.balance - @amount
+      @receiver.balance = @receiver.balance + @amount
+      @status = "complete"
+
     else
       reject_transfer
     end
   end
 
   def reject_transfer
-    self.status = "rejected"
-    "Transaction rejected. Please check your account balance."
+
+      
+      @status = "rejected"
+      "Transaction rejected. Please check your account balance."
   end
+
+  def reverse_transfer
+    if @status == "complete"
+      @sender.balance = @sender.balance + @amount
+      @receiver.balance = @receiver.balance - @amount
+      @status = "reversed"
+    else
+      "Transaction rejected. Please check your account balance."
+    end
+  end
+
+
 end
