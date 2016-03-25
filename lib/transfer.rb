@@ -21,6 +21,7 @@ attr_accessor :sender, :receiver, :status, :amount
   def reject_transfer
     if !(sender.valid?) || (@sender.balance < @amount)
       "Transaction rejected. Please check your account balance."
+      return "Transaction rejected. Please check your account balance."
     end
   end
 
