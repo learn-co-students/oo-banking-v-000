@@ -11,7 +11,7 @@ class Transfer
   end 
 
   def both_valid?
-  	if @sender.valid? == true && @receiver.valid? == true
+  	if sender.valid? == true && receiver.valid? == true
   		true
   	else
   		false
@@ -29,15 +29,15 @@ class Transfer
   end
 
   def reject_transfer
-  		@status = "rejected"
+  		self.status = "rejected"
   		"Transaction rejected. Please check your account balance."
   end
 
   def reverse_transfer
-  	if @status == "complete"
-  		@sender.balance += @amount
- 		@receiver.balance -= @amount
-  		@status = "reversed"
+  	if self.status == "complete"
+  		sender.balance += amount
+ 		receiver.balance -= amount
+  		self.status = "reversed"
   	end
   end
 
