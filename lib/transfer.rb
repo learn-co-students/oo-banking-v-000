@@ -19,7 +19,7 @@ class Transfer
       sender.balance -= amount
       self.status = "complete"
     else
-      self.reject_transfer
+      reject_transfer
     end
   end
 
@@ -33,6 +33,8 @@ class Transfer
       sender.balance += amount
       receiver.balance -= amount
       self.status = "reversed"
+    else
+      reject_transfer
     end
   end
 
