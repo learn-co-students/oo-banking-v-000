@@ -8,16 +8,12 @@ class BankAccount
     @status = "open"
   end
 
-  def balance
-    @balance
-  end
-
   def deposit(amount)
     self.balance += amount.to_i
   end
 
   def display_balance
-    "Your Balance is $#{self.balance}."
+    "Your Balance is $#{balance}."
   end
 
   def valid?
