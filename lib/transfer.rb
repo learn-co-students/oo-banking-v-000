@@ -1,7 +1,7 @@
 require'pry'
 class Transfer
   # code here
-  attr_accessor :sender, :receiver, :status, :amount, :counter
+  attr_accessor :sender, :receiver, :status, :amount
   attr_reader
 
   def initialize(sender, receiver, amount)
@@ -9,7 +9,6 @@ class Transfer
     @receiver = receiver
     @amount = amount
     @status = 'pending'
-    @counter = 0
   end
 
   def valid?(account)
@@ -21,7 +20,6 @@ class Transfer
   end
 
   def both_valid?
-    #binding.pry
     if @sender.valid? && @receiver.valid?
       true
     else
@@ -31,9 +29,7 @@ class Transfer
   end
 
   def execute_transaction
-    #binding.pry
-    @counter += 1
-    if @counter == 1 && self.both_valid?
+    if status == 'pending'
       sender.balance -= amount
       receiver.balance += amount
       @status = 'complete'
@@ -44,9 +40,7 @@ class Transfer
   end
 
   def reject_transfer
-      #binding.pry
-      status = "Transaction rejected. Please check your account balance."
-      #binding.pry
+      self.status = "Transaction rejected. Please check your account balance."
   end
 
   def reverse_transfer
