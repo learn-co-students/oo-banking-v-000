@@ -1,3 +1,5 @@
+require 'pry'
+
 class Transfer
 
   attr_accessor :sender, :receiver, :amount, :status
@@ -14,17 +16,22 @@ class Transfer
   end
 
   def execute_transaction
-    reject_transfer if both_valid? == false
-    sender.deposit(-1*@amount)
-    receiver.deposit(@amount)
-    @amount_save = @amount
-    @amount = 0
-    @status = "complete"
+    if both_valid? == false
+      binding.pry
+      reject_transfer
+    else
+      sender.deposit(-1*@amount)
+      receiver.deposit(@amount)
+      @amount_save = @amount
+      @amount = 0
+      @status = "complete"
+    end
   end
 
   def reject_transfer
-    "Transaction rejected. Please check your account balance." if sender.valid? == false
+    binding.pry
     @status = "rejected"
+    "Transaction rejected. Please check your account balance."
   end
 
 
