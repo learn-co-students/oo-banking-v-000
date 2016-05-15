@@ -16,7 +16,7 @@ class Transfer
   end
 
   def execute_transaction
-    if both_valid? == false
+    if sender.valid? == false
       binding.pry
       reject_transfer
     else
