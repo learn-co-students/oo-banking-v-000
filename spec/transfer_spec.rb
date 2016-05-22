@@ -1,4 +1,5 @@
-require 'pry'
+require_relative '../config/environment'
+
 describe 'Transfer' do
 
   let(:avi) { BankAccount.new("Avi") }

@@ -1,3 +1,5 @@
+require_relative '../config/environment'
+
 describe "BankAccount" do
 
   let(:avi) { BankAccount.new("Avi") }
