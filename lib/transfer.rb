@@ -11,9 +11,7 @@ class Transfer
 	end
 	
 	def valid?
-		x = BankAccount.new("Avi")
-		y = BankAccount.new("Amadafdada")
-		x.valid? && y.valid?
+		self.sender.valid? &&	self.receiver.valid?
 	end
   
 end
