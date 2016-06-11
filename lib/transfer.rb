@@ -18,21 +18,34 @@ class Transfer
     @@all
   end
 
-  #why does this work?
-
   def valid?
     sender.valid? && receiver.valid?
   end
 
-  #but not this?
-
-  def both_valid?
-    sender.valid? && receiver.valid?
+  def execute_transaction
+    if self.valid? && self.status == "pending" && sender.balance > amount
+      sender.balance -= amount
+      receiver.balance += amount
+      self.status = "complete"
+    else
+      reject_transfer
+    end
+    #binding.pry
   end
 
-  #how are we linking sender & receiver with a bank account?????
+  def reject_transfer
+    self.status = "rejected"
+    "Transaction rejected. Please check your account balance."
+  end
 
-  #SO MANY QUESTIONS!!!!!!! :) 
-
+  def reverse_transfer
+    if self.status == "complete"
+      sender.balance += amount
+      receiver.balance -= amount
+      self.status = "reversed"
+    else
+      reject_transfer
+    end
+  end
 
 end
