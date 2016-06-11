@@ -18,7 +18,21 @@ class Transfer
     @@all
   end
 
+  #why does this work?
+
   def valid?
-    BankAccount.all.detect {|account| account.name == sender.name}.valid? && BankAccount.all.detect {|account| account.name == receiver.name}.valid?
+    sender.valid? && receiver.valid?
   end
+
+  #but not this?
+
+  def both_valid?
+    sender.valid? && receiver.valid?
+  end
+
+  #how are we linking sender & receiver with a bank account?????
+
+  #SO MANY QUESTIONS!!!!!!! :) 
+
+
 end
