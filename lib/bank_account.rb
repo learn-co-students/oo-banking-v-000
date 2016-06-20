@@ -9,10 +9,12 @@ class BankAccount
     @name = name
     @balance = 1000
     @status = "open"
-    @@all = [@name, @balance, @status]
-binding.pry
-  end
+    @@all << self
 
+  end
+  def all
+    @@all
+  end
   def name=(name)
     raise AssociationTypeMismatchError
     @name = name
@@ -27,12 +29,9 @@ binding.pry
   end
 
   def valid?
-    if @balance > 0 && @status == "open"
-      return true
 
-    else
-      return false
-    end
+    self.balance > 0 && self.status == "open"? true : false
+
   end
 
   def close_account
