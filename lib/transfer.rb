@@ -9,7 +9,7 @@ def initialize(sender, receiver, amount, status="pending")
 end
 
 def valid_both? 
-  if @sender.valid? == true && @receiver.valid? == true
+  if sender.valid? == true && receiver.valid? == true
     true
   else 
     false
