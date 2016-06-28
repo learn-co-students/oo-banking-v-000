@@ -24,8 +24,12 @@ class Transfer
       @sender.balance = @sender.balance - @amount
       @status = "complete"
     end
-    #  1.times(execute_transaction)
-    # binding.pry
+    if !@sender.valid?
+        @status = "rejected"
+        "Transaction #{status}. Please check your account balance."
+            # binding.pry
+    end
+
   end
 
 end
