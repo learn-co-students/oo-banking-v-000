@@ -1,7 +1,8 @@
+require "pry"
 class Transfer
 
-  attr_accessor :status
-  attr_reader :balance, :sender, :receiver, :amount
+  attr_accessor :status, :amount
+  attr_reader :balance, :sender, :receiver
 
   def initialize(sender, receiver, amount)
     @amount = 50
@@ -15,6 +16,7 @@ class Transfer
     valid.valid?
     @sender.valid?
     @receiver.valid?
+  # end
   end
 
   def execute_transaction
@@ -24,10 +26,21 @@ class Transfer
       @sender.balance = @sender.balance - @amount
       @status = "complete"
     end
-    if !@sender.valid?
+    if !valid?
         @status = "rejected"
         "Transaction #{status}. Please check your account balance."
+        reverse_transaction
+
             # binding.pry
+    end
+  end
+
+    def reverse_transfer
+      if execute_transaction || !execute_transaction
+        @receiver.balance = @receiver.balance - @amount
+        @sender.balance = @sender.balance + @amount
+        @status = "reversed"
+        # binding.pry
     end
 
   end
