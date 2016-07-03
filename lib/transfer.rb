@@ -1,12 +1,12 @@
 require "pry"
 class Transfer
 
-  attr_reader :balance, :sender, :receiver, :amount
+  attr_reader :sender, :receiver, :amount
   attr_accessor :status
 
 
   def initialize(sender, receiver, amount)
-    @amount = 50
+    @amount = amount
     @receiver = receiver
     @sender = sender
     @status = "pending"
@@ -17,12 +17,10 @@ class Transfer
   end
 
   def execute_transaction
-    # binding.pry
-    if valid?  #means no transaction has been made yet
+    if valid? && sender.balance > amount && self.status == "pending" #you want to check if the sender has enough money in their account
       self.receiver.balance = self.receiver.balance + amount
       self.sender.balance = self.sender.balance - amount
       self.status = "complete"
-      # binding.pry
     else
       @status = "rejected"
       "Transaction rejected. Please check your account balance."
