@@ -12,7 +12,7 @@ class BankAccount
   end
 
   def deposit(deposit)
-    @balance = @balance.to_i + deposit.to_i
+    self.balance = self.balance.to_i + deposit.to_i
     @balance
   end
 
@@ -21,16 +21,11 @@ class BankAccount
   end
 
   def valid?
-    if @balance > 0 && status == "open"
-      true
-    else
-      false
-    end
-
+   self.balance > 0 && status == "open"
   end
 
   def close_account
-    @status = "closed"
+    self.status = "closed"
   end
 
 end
