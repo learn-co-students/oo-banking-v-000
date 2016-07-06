@@ -9,20 +9,20 @@ class Transfer
   end
 
   def valid?
-    self.receiver.valid? && self.sender.valid?
+    receiver.valid? && sender.valid?
   end
 
   def execute_transaction
     if self.status != "complete"
-      if  ((self.sender.balance - self.amount) > 0) && ((self.receiver.balance + self.amount) > 0)
-        self.receiver.balance += self.amount
-        self.sender.balance -= self.amount
+      if  ((sender.balance - self.amount) > 0) && ((receiver.balance + self.amount) > 0)
+        receiver.balance += self.amount
+        sender.balance -= self.amount
         self.status = "complete"
       else
         self.bad_transfer
       end
     else
-      self.bad_transfer
+      bad_transfer
     end
   end
 
@@ -33,12 +33,12 @@ class Transfer
 
   def reverse_transfer
     if self.status == "complete"
-      if  ((self.sender.balance + self.amount) > 0) && ((self.receiver.balance - self.amount) > 0)
-        self.receiver.balance -= self.amount
-        self.sender.balance += self.amount
+      if  ((sender.balance + self.amount) > 0) && ((receiver.balance - self.amount) > 0)
+        receiver.balance -= self.amount
+        sender.balance += self.amount
         self.status = "reversed"
       else
-        self.bad_transfer
+        bad_transfer
       end
     end
   end
