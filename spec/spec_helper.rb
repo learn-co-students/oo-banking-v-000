@@ -9,4 +9,5 @@ require_relative '../lib/transfer'
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.order = 'default'
+  RSpec::Expectations.configuration.warn_about_potential_false_positives = false
 end
