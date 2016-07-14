@@ -1,5 +1,6 @@
 class BankAccount
-  attr_reader :name, :balance, :status
+  attr_accessor :balance, :status
+  attr_reader :name
 
   def initialize(name)
     @name = name
@@ -12,7 +13,7 @@ class BankAccount
   end
 
   def display_balance
-    return "Your balance is #{@balance}."
+    return "Your balance is $#{@balance}."
   end
 
   def valid?
@@ -20,6 +21,6 @@ class BankAccount
   end
 
   def close_account
-    status = "closed"
+    @status = "closed"
   end
 end
