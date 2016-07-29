@@ -15,15 +15,15 @@ class Transfer
   end
 
   def execute_transaction
-    if self.sender.balance < self.amount
+    if !valid? || sender.balance < amount
       self.status = 'rejected'
       'Transaction rejected. Please check your account balance.'
-    elsif status == 'pending'
-      self.last_sender = self.sender
-      self.last_receiver = self.receiver
-      self.last_amount = self.amount
-      self.sender.withdraw(self.amount)
-      self.receiver.deposit(self.amount)
+    elsif status == 'pending' && valid?
+      self.last_sender = sender
+      self.last_receiver = receiver
+      self.last_amount = amount
+      sender.withdraw(amount)
+      receiver.deposit(amount)
       self.status = 'complete'
     end
   end
