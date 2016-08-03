@@ -17,9 +17,9 @@ class Transfer
     if @sender.balance > amount && sender.valid? && self.status == "pending"
       @sender.deposit(withdrawal)
       @receiver.deposit(amount)
-      @status = "complete"
+      self.status = "complete"
     else
-      @status = "rejected"
+      self.status = "rejected"
       "Transaction rejected. Please check your account balance."
     end
   end
@@ -29,7 +29,7 @@ class Transfer
       withdrawal = amount * -1
       @sender.deposit(amount)
       @receiver.deposit(withdrawal)
-      @status = "reversed"
+      self.status = "reversed"
     end
   end
   
