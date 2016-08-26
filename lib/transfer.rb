@@ -1,3 +1,5 @@
+require 'pry'
+
 class Transfer
   attr_accessor :receiver, :status, :amount
   attr_reader :sender
@@ -6,7 +8,7 @@ class Transfer
     @sender = sender
     @receiver = receiver
     @status = "pending"
-    @amount = 50
+    @amount = amount
   end
 
   def valid?
@@ -14,9 +16,9 @@ class Transfer
   end
 
   def execute_transaction
-    if valid? && status == "pending" && self.sender.balance - self.amount > 0
-      sender.balance = sender.balance - @amount
-      receiver.balance = receiver.balance + @amount
+    if sender.valid? && @status == "pending" && sender.balance - amount >= 0
+      sender.balance = sender.balance - amount
+      receiver.balance = receiver.balance + amount
       @status = "complete"
     else
       @status = "rejected"
@@ -25,6 +27,11 @@ class Transfer
   end
 
   def reverse_transfer
-
+    if sender.valid? && @status == "complete" && receiver.balance - amount >= 0
+    sender.balance = sender.balance + amount
+    receiver.balance = receiver.balance - amount
+    @status = "reversed"
+    else
+    end
   end
 end
