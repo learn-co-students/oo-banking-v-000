@@ -59,6 +59,8 @@ describe 'Transfer' do
         expect(amanda.balance).to eq(950)
         expect(avi.balance).to eq(1050)
         expect(transfer.status).to eq("complete")
+        #A way to make the transaction recuring 
+        # transfer.status = "pending"
         transfer.execute_transaction
         expect(amanda.balance).to eq(950)
         expect(avi.balance).to eq(1050)
