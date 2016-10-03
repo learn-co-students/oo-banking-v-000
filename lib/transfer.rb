@@ -1,6 +1,6 @@
 class Transfer
   attr_accessor :status
-  attr_reader :sender, :receiver, :amount
+  attr_reader :sender, :receiver, :amount #Since sender, receiver or amount cannot be altered for a transfer instance after initialize
 
   def initialize(sender, receiver, amount)
     @sender = sender
@@ -9,7 +9,7 @@ class Transfer
     @status = "pending"
   end
 
-  def valid?
+  def valid? # To check for the validity of accounts, as well as transfer amount
     (self.sender.valid? && self.receiver.valid? && self.amount == 50) ? true : false
   end
 
@@ -27,7 +27,7 @@ class Transfer
   end
 
   def reverse_transfer
-    if self.status == "complete"
+    if self.status == "complete" # Allows reversal of only completed transactions
       self.sender.balance += self.amount
       self.receiver.balance -= self.amount
       self.status = "reversed"
