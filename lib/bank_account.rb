@@ -1,36 +1,28 @@
+require 'pry'
 class BankAccount
+
   attr_reader :name
   attr_accessor :balance, :status
 
-  def initialize(name)
-  	@name = name
-  	@balance = 1000
-  	@status = "open"
+  def initialize(name, balance = 1000, status = 'open')
+    @name = name
+    @balance = balance
+    @status = status
   end
 
   def deposit(amount)
-  	if amount.integer?   
-  	  self.balance = balance + (amount)
-    else
-  	  "amount must be an integer"
-    end
+    @balance += amount
   end
 
   def display_balance
-  	"Your Balance is $#{self.balance}."
+    "Your Balance is $#{balance}."
   end
 
   def valid?
-  	if self.status == "open" && self.balance > 0
-  	  true
-  	else
-  	  false
-  	end
+    balance != 0 && status == 'open'
   end
 
   def close_account
-  	self.status = "closed"
+    self.status = "closed"
   end
-
-
 end
