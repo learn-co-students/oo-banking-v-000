@@ -1,3 +1,6 @@
+require 'pry'
+
+
 class Transfer
 
   attr_reader :amount, :sender, :receiver
@@ -15,13 +18,24 @@ class Transfer
   end
 
   def execute_transaction
-    if valid?
-       self.sender.balance  = self.sender.balance - self.amount
-      self.receiver.balance = self.receiver.balance + self.amount
+    if valid? && self.status == "pending" && sender.balance > amount
+       sender.balance -=  amount
+       receiver.balance +=  amount
+       self.status = "complete"
     else
+       self.status = "rejected"
       "Transaction rejected. Please check your account balance."
     end
-     self.status = "complete"
   end
+
+  def reverse_transfer
+    if valid? && self.status == "complete"
+      sender.balance += amount
+      receiver.balance -= amount
+      self.status = "reversed"
+
+  end
+
+end
 
 end
