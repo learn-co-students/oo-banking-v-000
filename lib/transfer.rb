@@ -21,8 +21,8 @@ class Transfer
       receiver.balance += amount
       self.status = "complete"
     elsif sender != valid?
-      "Transaction rejected. Please check your account balance."
       self.status = "rejected"
+      "Transaction rejected. Please check your account balance."
     end
   end
 
