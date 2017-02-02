@@ -37,5 +37,3 @@ class Transfer
   end
 
 end
-
-bad_transfer = Transfer.new(amanda, avi, 4000)

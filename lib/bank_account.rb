@@ -24,6 +24,3 @@ class BankAccount
     self.status = "closed"
   end
 end
-
-avi = BankAccount.new("Avi")
-amanda = BankAccount.new("Amanda")
