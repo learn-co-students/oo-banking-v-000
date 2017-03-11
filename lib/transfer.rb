@@ -56,6 +56,7 @@ class Transfer
       #@sender.balance = sender_balance
       #@receiver.balance = receiver_balance
       elsif @status == "complete"
+        binding.pry
         @sender.balance
         @receiver.balance
       end
