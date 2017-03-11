@@ -57,11 +57,16 @@ describe 'Transfer' do
       it "each transfer can only happen once" do
         transfer.execute_transaction
         expect(amanda.balance).to eq(950)
+        #binding.pry
         expect(avi.balance).to eq(1050)
+        #binding.pry
         expect(transfer.status).to eq("complete")
         transfer.execute_transaction
+        #binding.pry
         expect(amanda.balance).to eq(950)
+        #binding.pry
         expect(avi.balance).to eq(1050)
+        #binding.pry
       end
 
       it "rejects a transfer if the sender doesn't have a valid account" do
@@ -74,10 +79,14 @@ describe 'Transfer' do
       it "can reverse a transfer between two accounts" do
         transfer.execute_transaction
         expect(amanda.balance).to eq(950)
+        #binding.pry
         expect(avi.balance).to eq(1050)
+        #binding.pry
         transfer.reverse_transfer
         expect(avi.balance).to eq(1000)
+        #binding.pry
         expect(amanda.balance).to eq(1000)
+        #binding.pry
         expect(transfer.status).to eq("reversed")
       end
 
