@@ -56,7 +56,5 @@ class Transfer
       #@sender.balance = sender_balance
       #@receiver.balance = receiver_balance
       end
-      #
-      end
     end
 end
