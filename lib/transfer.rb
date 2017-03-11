@@ -55,7 +55,8 @@ class Transfer
       #receiver_balance = @receiver.balance - @amount
       #@sender.balance = sender_balance
       #@receiver.balance = receiver_balance
-      elsif @status == "complete"
+      end
+      if @status == "complete" && @status != "pending"
         binding.pry
         @sender.balance
         @receiver.balance
