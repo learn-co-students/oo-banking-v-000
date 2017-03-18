@@ -1,14 +1,11 @@
 class BankAccount
-  attr_accessor :name, :balance, :status
+  attr_reader :name
+  attr_accessor :balance, :status
 
   def initialize(name)
     @name = name
     @balance = 1000
     @status = 'open'
-  end
-
-  def name=(name)
-    raise 'NOPE. You cannot change the name'
   end
 
   def deposit(amount)
@@ -20,11 +17,11 @@ class BankAccount
   end
 
   def valid?
-     @status == "open" && @balance > 0 ? true : false
+     status == "open" && balance > 0 
   end
 
   def close_account
-    @status = 'closed'
+    self.status = 'closed'
   end
 
 end
