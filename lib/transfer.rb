@@ -7,11 +7,7 @@ class Transfer
   end
 
   def valid?
-    if self.sender.valid? && self.receiver.valid?
-      true
-    else
-      false
-    end
+    self.sender.valid? && self.receiver.valid?
   end
 
   def execute_transaction
@@ -20,16 +16,22 @@ class Transfer
       self.receiver.deposit(self.amount)
       self.status = "complete"
     else
-      self.status = "rejected"
-      "Transaction rejected. Please check your account balance."
+      reject_transfer
     end
   end
 
   def reverse_transfer
-    if self.status == "complete"
+    if self.status == "complete" && self.receiver.balance >= self.amount
       self.receiver.withdraw(self.amount)
       self.sender.deposit(self.amount)
       self.status = "reversed"
+    else
+      reject_transfer
     end
+  end
+
+  def reject_transfer
+    self.status = "rejected"
+    "Transaction rejected. Please check your account balance."
   end
 end
