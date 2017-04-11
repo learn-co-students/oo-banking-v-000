@@ -13,7 +13,7 @@ class Transfer
   end
 
   def valid?
-    self.receiver.valid? && self.sender.valid? && (self.sender.balance >= self.amount)
+    self.receiver.valid? && self.sender.valid? && (self.sender.balance >= self.amount) #last condition is not good(
   end
 
   def execute_transaction
@@ -27,7 +27,7 @@ class Transfer
     end
   end
 
-  def reverse_transfer
+  def reverse_transfer #there is a room to make this method better by validating
     if self.status == "complete"
       #binding.pry
       self.sender.balance += self.amount
