@@ -4,21 +4,18 @@ class BankAccount
   attr_accessor :balance, :status
   attr_reader :name
 
-  @@accounts = []
-
   def initialize(name, balance = 1000, status = "open")
     @name = name
     @balance = balance
     @status = status
-    @@accounts << self
   end
 
   def deposit(amount)
-    @balance += amount
+    self.balance += amount
   end
 
   def display_balance
-    "Your balance is $#{@balance}."
+    "Your balance is $#{balance}."
   end
 
   def valid?
