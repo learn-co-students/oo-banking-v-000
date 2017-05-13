@@ -17,10 +17,8 @@ class Transfer
   end
 
   def reject_transfer
-    if sender.valid? == false
-      self.status = "rejected"
-      "Transaction rejected. Please check your account balance."
-    end
+    self.status = "rejected"
+    "Transaction rejected. Please check your account balance."
   end
 
  def execute_transaction
@@ -29,11 +27,8 @@ class Transfer
     receiver.balance = receiver.balance + amount
     self.status = "complete"
    else
-     #"Transaction rejected. Please check your account balance."
-     self.reject_transfer
-     #self.status = "rejected"
-
-   end
+    reject_transfer
+    end
   end
 
   def reverse_transfer

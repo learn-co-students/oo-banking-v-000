@@ -28,11 +28,4 @@ class BankAccount
     @balance = 0
     @status = "closed"
   end
-
-  # def reject_transfer
-  #   if sender.valid? == false
-  #     "Transaction rejected. Please check your account balance."
-  #   end
-  # end
-
 end
