@@ -30,7 +30,7 @@ class Transfer
     self.status = "complete"
    else
      #"Transaction rejected. Please check your account balance."
-     reject_transfer
+     self.reject_transfer
      #self.status = "rejected"
 
    end
