@@ -1,77 +1,41 @@
 class Transfer
-
-<<<<<<< HEAD
-  attr_accessor :status
-  attr_reader :sender, :receiver, :amount
   
-=======
-attr_reader :receiver, :amount, :sender
-  attr_accessor :status
->>>>>>> 916cfd704a9d9bb65fefd80f2d2454ed0dbc000d
+  attr_accessor :sender, :receiver, :status, :amount
 
   def initialize(sender, receiver, amount)
-    @amount = amount
-    @receiver = receiver
-    @sender = sender
+    @sender= sender
+    @receiver= receiver
     @status = "pending"
-<<<<<<< HEAD
-    @amount = amount
-=======
->>>>>>> 916cfd704a9d9bb65fefd80f2d2454ed0dbc000d
+    @amount= amount
   end
 
   def valid?
-    sender.valid? && receiver.valid?
+    if sender.valid? && receiver.valid?
+      true
+    end
   end
-<<<<<<< HEAD
-
-  def execute_transaction 
-=======
 
   def execute_transaction
-
->>>>>>> 916cfd704a9d9bb65fefd80f2d2454ed0dbc000d
-    if valid? && sender.balance > amount && self.status == "pending"
-    sender.balance -= amount
-    receiver.balance += amount
-    @status = "complete"
-  else
-    reject_transfer
-<<<<<<< HEAD
-=======
-  end
->>>>>>> 916cfd704a9d9bb65fefd80f2d2454ed0dbc000d
-  end
-end
-
-<<<<<<< HEAD
-def reject_transfer
-    self.status = "rejected"
-    "Transaction rejected. Please check your account balance."
-=======
-  def reject_transfer
-    self.status = "rejected"
-"Transaction rejected. Please check your account balance."
->>>>>>> 916cfd704a9d9bb65fefd80f2d2454ed0dbc000d
-  end
-
-  def reverse_transfer
-    if valid? && receiver.balance > amount && self.status == "complete"
-<<<<<<< HEAD
-    sender.balance += amount
-    receiver.balance -= amount
-    @status = "reversed"
-  end
-  end
-end
-
-=======
-      receiver.balance -= amount
-      sender.balance += amount
-      @status = "reversed"
+    valid? 
+    if sender.balance > amount && self.status == "pending"
+      @sender.balance= self.sender.balance - amount
+      @receiver.balance= self.receiver.balance + amount
+      self.status= "complete"
     else
       reject_transfer
     end
   end
+
+  def reject_transfer
+    self.status = "rejected"
+    "Transaction rejected. Please check your account balance."
+  end
+
+  def reverse_transfer
+    if  valid? && receiver.balance > amount && self.status == "complete"
+      @sender.balance= self.sender.balance + amount
+      @receiver.balance= self.receiver.balance - amount
+      self.status= "reversed"
+    end
+  end
 end
->>>>>>> 916cfd704a9d9bb65fefd80f2d2454ed0dbc000d
