@@ -22,16 +22,16 @@ attr_accessor :sender, :receiver, :amount, :status
    elsif @status == "complete"
      "Already completed."
    else
-     @sender.deposit(-@amount)
-     @receiver.deposit(@amount)
+     @sender.balance -= @amount
+     @receiver.balance += @amount
      @status = "complete"
    end
   end
 
   def reverse_transfer
     if execute_transaction
-      @sender.deposit(amount)
-      @receiver.deposit(-@amount)
+      @sender.balance += @amount
+      @receiver.balance -= @amount
       @status = "reversed"
     end
   end
