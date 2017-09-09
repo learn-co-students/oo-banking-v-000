@@ -1,5 +1,7 @@
 class BankAccount
 
+  attr_accessor :sender, :receiver
+
   def initialize(name)
     @name = name
   end
@@ -24,8 +26,8 @@ class BankAccount
     "Your balance is $1000."
   end
 
-  def valid? #is valid w/open status & balance > than 0
-    if status == "open" and balance >= 0
+  def valid? #is valid w/open status & balance > than 0 & != closed
+    if @status == "open" and @balance >= 0
       valid
       else
         false
