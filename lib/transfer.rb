@@ -3,21 +3,13 @@ class Transfer
 
   #Transfer class acts as a space for a transaction between two instances of the BankAccount class
 
-  #Transfer instances runs checks first before transfer is complete
-  #Transfer instances can reject a transfer if the BankAccount accounts aren't valid or if sender doesn't have the money.
-
-  #Transfer start as a "pending" status
-  # once executed turns into a "complete" status/state
-  #statuses = "pending", "complete", "rejected", "reversed"
-  #completed transfer can be reversed and go into "reversed" status
-
   attr_accessor :status
   attr_reader :sender, :receiver, :amount
 
   def initialize(sender, receiver, amount) #initializes with a sender, receiver, amount
     @sender = sender #expect(transfer.sender).to eq(amanda)
     @receiver = receiver #expect(transfer.receiver).to eq(avi)
-    @status = "pending" #always initializes with a status of 'pending'; expect(transfer.status).to eq("pending")
+    @status = "pending" #always initializes with a status of 'pending'; expect(transfer.status).to eq("pending") #Transfer start as a "pending" status
     @amount = amount #expect(transfer.amount).to eq(50)
   end
 
@@ -37,14 +29,22 @@ class Transfer
     sender.valid? && receiver.valid? #valid? from BankAccount class instance method
   end
 
+  #Transfer instances runs checks first before transfer is complete
+  #Transfer instances can reject a transfer if the BankAccount accounts aren't valid or if sender doesn't have the money.
+  #When Transfer executed, status turns into a "complete" status/state
+  #statuses = "pending", "complete", "rejected", "reversed"
+  #completed transfer can be reversed and go into "reversed" status
+
   def execute_transaction #can execute a successful transaction between two accounts
 
-    # transfer.execute_transaction
-    # expect(amanda.balance).to eq(950) sender
-    # expect(avi.balance).to eq(1050) receiver
-    # expect(transfer.status).to eq("complete")
+    #if the accounts are valid, the sender's balance is greater than the amount to send (if the sender doesn't have the amount to send, reject) and its status is pending, reduce the sender's balance by the amount, credit the receiver's balance by the amount; change status to complete. Otherwise, reject the transfer.
 
-    if valid? && sender.balance > amount && self.status == "pending" #(Transfer valid? method)
+      # transfer.execute_transaction
+      # expect(amanda.balance).to eq(950) sender
+      # expect(avi.balance).to eq(1050) receiver
+      # expect(transfer.status).to eq("complete")
+
+    if valid? && sender.balance > amount && self.status == "pending" #Transfer instances can reject a transfer if the BankAccount accounts aren't valid or if sender doesn't have the money. This valid? is the Transfer class instance method of valid?
       sender.balance -= amount
       receiver.balance += amount
       self.status = "complete"
@@ -67,11 +67,14 @@ class Transfer
   end
 
   def reject_transfer
-    self.status = "rejected"
+    self.status = "rejected" #the Transfer class status is rejected
     "Transaction #{self.status}. Please check your account balance."
   end
 
-  def reverse_transfer #can reverse a transfer between two accounts
+  def reverse_transfer #can reverse a transfer between two accounts   #completed transfer can be reversed and go into "reversed" status
+
+    #if the accounts are valid, the receiver's balance is greater than the amount to send (if the receiver doesn't have the amount to send, reject) and its status is complete, reduce the receiver's balance by the amount, credit the sender's balance by the amount; change status to reversed. Otherwise, reject the transfer.
+
     # transfer.execute_transaction
     # expect(amanda.balance).to eq(950) sender
     # expect(avi.balance).to eq(1050) receiver
