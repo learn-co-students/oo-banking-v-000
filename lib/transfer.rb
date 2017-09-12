@@ -1,47 +1,48 @@
 require 'pry'
 
 class Transfer
-#Transfers start out in a "pending" status. They can be executed and go to a "complete" state. They can also go to a "rejected" status. A completed transfer can also be reversed and go into a "reversed" status.
+#They can be executed and go to a "complete" state. They can also go to a "rejected" status. A completed transfer can also be reversed and go into a "reversed" status.
 
-   attr_accessor :status, :sender, :receiver
+  attr_accessor :transfer_amount, :name, :sender, :receiver
 
-   def initialize(status)
-  #   binding.pry
+   def initialize(status, sender, receiver)
       @status = "pending"
+      @sender = sender
+      @receiver = receiver
+      @transfer_amount = 50
    end
 
-    def transfer
-      binding.pry
-      transfer = Transfer.new
+    # def sender #initializes w/a sender test for validity (valid?)
+    #   @sender
+    # end
+    #
+    # def receiver #initializes w/a receiver test for validity (valid?)
+    #     @receiver
+    # end
+    #
+    def status #always initializes w/a status of 'pending'
+        @status
+    end
+    #
+    def transfer_amount #initializes w/a transfer amount
+        self.transfer_amount
     end
 
-    def sender #initializes w/a sender test for validity (valid?)
+    def valid?(sender, receiver)  #both accounts are valid
       @sender
-    end
-
-    def receiver #initializes w/a receiver test for validity (valid?)
       @receiver
     end
 
-    def status #always initializes w/a status of 'pending'
-      @status = "pending"
+    def execute_transaction #transfer only once, rejects if invalid acct, can transfer betw 2 if valid
+      if valid?
+        status = "complete"
+      else
+        "Transaction rejected. Please check your account balance."
+      end
     end
 
-  def transfer_amount #initializes w/a transfer amount
-    @transfer_amount = 50
-  end
-
-  def valid?  #both accounts are valid
-    #calls on the sender and receivers valid? methods
-  end
-
-  def execute_transaction
-    #can execute a successful transaction betw two accounts
-    #each transfer can only happen once
-    #rejects a transfer if the sender doesn't have a valid accounts
-  end
-
   def reverse_transfer
+
     #can reverse a transfer betw two accounts
     #it can only reverse executed Transfers
   end
