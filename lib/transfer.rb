@@ -1,50 +1,44 @@
-require 'pry'
 
 class Transfer
 #They can be executed and go to a "complete" state. They can also go to a "rejected" status. A completed transfer can also be reversed and go into a "reversed" status.
 
-  attr_accessor :transfer_amount, :name, :sender, :receiver
+  attr_accessor :status, :sender, :receiver, :amount
 
-   def initialize(status, sender, receiver)
+   def initialize(sender, receiver, amount)
       @status = "pending"
       @sender = sender
       @receiver = receiver
-      @transfer_amount = 50
+      @amount = amount
    end
 
-    # def sender #initializes w/a sender test for validity (valid?)
-    #   @sender
-    # end
-    #
-    # def receiver #initializes w/a receiver test for validity (valid?)
-    #     @receiver
-    # end
-    #
-    def status #always initializes w/a status of 'pending'
-        @status
-    end
-    #
-    def transfer_amount #initializes w/a transfer amount
-        self.transfer_amount
-    end
-
-    def valid?(sender, receiver)  #both accounts are valid
-      @sender
-      @receiver
+    def valid?  #both accounts are valid
+      @sender.valid? && @receiver.valid?
     end
 
     def execute_transaction #transfer only once, rejects if invalid acct, can transfer betw 2 if valid
-      if valid?
-        status = "complete"
+      if status == "pending" && valid? && amount <= sender.balance
+          sender.balance -= amount
+          receiver.balance += amount
+          self.status = "complete"
       else
-        "Transaction rejected. Please check your account balance."
+        self.status = "rejected"
+         "Transaction rejected. Please check your account balance."
       end
     end
 
   def reverse_transfer
-
+      if status == "complete" && valid? && amount <= receiver.balance
+          receiver.balance -= amount
+          sender.balance += amount
+          self.status = "reversed"
+        # if rec has enuf $
+        #   if accts r valid?
+        #     amount from receive
+        #     add amount sender
+        #
     #can reverse a transfer betw two accounts
     #it can only reverse executed Transfers
+      end
   end
 
 end
