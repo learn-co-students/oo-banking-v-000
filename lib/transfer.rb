@@ -43,7 +43,7 @@ class Transfer
       @sender.balance += @amount
       #expect(avi.balance).to eq(1050)
       @receiver.balance -= @amount
-      self.status = "reversed
+      self.status = "reversed"
     end
   end
 end
