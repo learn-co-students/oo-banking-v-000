@@ -36,9 +36,6 @@ class Transfer
       @status = "reversed"
 
     end
-    # if that status is complete
-    #   we want to just reverse what happened
-    #   change standing to pending
   end
 
 end
