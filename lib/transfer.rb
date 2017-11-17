@@ -1,9 +1,13 @@
 class Transfer
   # your code here
-  attr_accessor :transfer, :sender, :receiver, :status, :amount
+  # attr_accessor :transfer, :sender, :receiver, :status, :amount
 
+  # Refactored based on solution
+
+  attr_accessor :status
+  attr_reader :amount, :sender, :receiver
   def initialize(sender, receiver, amount)
-    @transfer = transfer
+    # @transfer = transfer
     @sender = sender
     @receiver = receiver
     @status = "pending"
@@ -11,11 +15,13 @@ class Transfer
   end
 
   def valid?
-    if sender.valid? && receiver.valid?
-      true
-    else
-      false
-    end
+    # if sender.valid? && receiver.valid?
+    #   true
+    # else
+    #   false
+    # end
+    # Refactor based on solution
+    sender.valid? && receiver.valid?
   end
 
   def execute_transaction
@@ -24,8 +30,10 @@ class Transfer
       receiver.balance += amount
       @status = "complete"
     else
-      @status = "rejected"
-      "Transaction rejected. Please check your account balance."
+      # @status = "rejected"
+      # "Transaction rejected. Please check your account balance."
+      # reject_transfer per solution
+      reject_transfer
     end
   end
 
@@ -34,6 +42,15 @@ class Transfer
       receiver.balance -= amount
       sender.balance += amount
       @status = "reversed"
+      # else added per solution
+    else
+      reject_transfer
     end
+  end
+
+  # rejected_transfer methos added per solution
+  def reject_transfer
+    self.status = "rejected"
+    "Transaction rejected. Please check your account balance."
   end
 end
