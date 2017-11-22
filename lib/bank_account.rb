@@ -1,5 +1,9 @@
 class BankAccount
+<<<<<<< HEAD
 attr_accessor :balance, :status, :transfer
+=======
+attr_accessor :balance, :status
+>>>>>>> 5076d9bf1895fca8600679dcffef17503a10ed8c
 attr_reader :name
 @@all = []
 
@@ -8,7 +12,10 @@ attr_reader :name
     @@all<<self
     @balance = 1000
     @status = "open"
+<<<<<<< HEAD
     @transfer = []
+=======
+>>>>>>> 5076d9bf1895fca8600679dcffef17503a10ed8c
   end
 
   def self.all

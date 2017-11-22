@@ -9,7 +9,11 @@ attr_accessor :sender, :receiver, :status, :amount
     @receiver = receiver
     @status = "pending"
     @amount = amount
+<<<<<<< HEAD
     BankAccount.all.find{|account|account == sender}.transfer<<self
+=======
+
+>>>>>>> 5076d9bf1895fca8600679dcffef17503a10ed8c
   end
 
   def valid?
@@ -22,6 +26,7 @@ attr_accessor :sender, :receiver, :status, :amount
     end
   end
 
+<<<<<<< HEAD
   def sender_account_rec
     BankAccount.all.find{|account|account == @sender}
   end
@@ -32,11 +37,20 @@ attr_accessor :sender, :receiver, :status, :amount
         @status = "rejected"
         return "Transaction rejected. Please check your account balance."
       elsif @status == "pending"
+=======
+  def execute_transaction
+    if self.valid?
+      if @amount>@sender.balance
+        return "Transaction rejected. Please check your account balance."
+        @status = "rejected"
+      else
+>>>>>>> 5076d9bf1895fca8600679dcffef17503a10ed8c
         @receiver.balance += @amount
         @sender.balance -= @amount
         @status = "complete"
       end
     else
+<<<<<<< HEAD
       @status = "rejected"
       return "Transaction rejected. Please check your account balance."
     end
@@ -51,4 +65,11 @@ attr_accessor :sender, :receiver, :status, :amount
   end
 
 
+=======
+      return "Transaction rejected. Please check your account balance."
+      @status = "rejected"
+    end
+  end
+
+>>>>>>> 5076d9bf1895fca8600679dcffef17503a10ed8c
 end
