@@ -6,7 +6,7 @@ class Transfer
   def initialize(sender, receiver, amount)
     @sender = sender
     @receiver = receiver
-    @amount = 50
+    @amount = amount
     #this amount shouldn't be initialized...
     @status = "pending"
   end
@@ -16,14 +16,13 @@ class Transfer
   end
 
   def execute_transaction
-    if amount != amount || @sender.valid? == false
-      #only difference for bad_transfer is the transfer amount.  sender.valid? comes out to be true....
-      @status == "rejected"
-      "Transaction rejected. Please check your account balance."
-    elsif @status == "pending" && @sender.valid?
+    if @status == "pending" && @sender.valid? && @sender.balance > @amount
       @sender.deposit(-50)
       @receiver.deposit(50)
       @status = "complete"
+    elsif @sender.balance < @amount || @sender.valid? == false
+      @status == "rejected"
+      "Transaction rejected. Please check your account balance."
     end
   end
 
