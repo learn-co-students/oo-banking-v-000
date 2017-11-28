@@ -7,6 +7,7 @@ class Transfer
     @sender = sender
     @receiver = receiver
     @amount = 50
+    #this amount shouldn't be initialized...
     @status = "pending"
   end
 
@@ -16,6 +17,7 @@ class Transfer
 
   def execute_transaction
     if amount != amount || @sender.valid? == false
+      #only difference for bad_transfer is the transfer amount.  sender.valid? comes out to be true....
       @status == "rejected"
       "Transaction rejected. Please check your account balance."
     elsif @status == "pending" && @sender.valid?
