@@ -27,13 +27,12 @@ class Transfer
   end
 
   def reverse_transfer
-    binding.pry
     if @status == 'complete'
       @sender.deposit(@amount)
       @receiver.balance = @receiver.balance - @amount
       @status = 'reversed'
     else
-      return "Can only reverse completed transfers".
+      return "Can only reverse completed transfers"
     end
   end
 
