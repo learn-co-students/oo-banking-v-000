@@ -21,10 +21,11 @@ describe "BankAccount" do
       end
 
       it "can't change its name" do
-        expect { avi.name = "Bob" }.to raise_error
+        expect { avi.name = "Bob" }.to raise_error 
       end
     end
   end
+
 
   describe '#deposit' do
     it "can deposit money into its account" do
