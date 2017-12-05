@@ -4,6 +4,7 @@ class BankAccount
 # create initialize method w/argument (name) 
   def initialize(name)
     @name = name
+    @balance = 1000
   end 
 # add balance of $1000 to initialize method
 # initialize with a status of open (instance variable)
