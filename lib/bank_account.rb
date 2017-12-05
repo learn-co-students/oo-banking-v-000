@@ -19,7 +19,13 @@ class BankAccount
   # create display_balance instance method 
     # - this method should return the string "Your balance is $#{bankaccount instance.balance}."
   def display_balance 
-    
+   "Your balance is $#{self.balance}."
+    end 
+  
+  # create valid method
+    # this method should verify an open status and a balance greater than 0 
+  def valid?
     
   end 
+  
 end
