@@ -18,5 +18,8 @@ class BankAccount
   
   # create display_balance instance method 
     # - this method should return the string "Your balance is $#{bankaccount instance.balance}."
-  
+  def display_balance 
+    
+    
+  end 
 end
