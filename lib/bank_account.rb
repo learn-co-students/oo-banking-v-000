@@ -1,6 +1,6 @@
 class BankAccount
 # create attr_reader for name - so that name cannot be changed 
-  attr_reader :name
+  attr_reader :name, :balance
 # create initialize method w/argument (name) 
   def initialize(name)
     @name = name
