@@ -26,12 +26,17 @@ class Transfer
 # create execute_transaction method 
   # - takes transfer amount @amount subtracts from sender and adds to receiver balance 
   def execute_transaction
-    sender.balance -= @amount
-    receiver.balance += @amount
-    @status = "complete"  
-    if sender.balance == 950 && receiver.balance == 1050
-      break    
-  end 
+    if @status != "complete"  
+      sender.balance -= @amount
+      receiver.balance += @amount
+      @status = "complete"  
+    elsif !sender.valid?
+      "Transaction rejected. Please check your account balance."
+      @status = "rejected"
+      
   end
+    
+  end 
   
-end
+  
+  end
