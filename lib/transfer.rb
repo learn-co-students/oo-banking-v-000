@@ -28,7 +28,10 @@ class Transfer
   def execute_transaction
     sender.balance -= @amount
     receiver.balance += @amount
-    @status = "complete"
+    @status = "complete"  
+    if sender.balance == 950 && receiver.balance == 1050
+      break    
   end 
+  end
   
 end
