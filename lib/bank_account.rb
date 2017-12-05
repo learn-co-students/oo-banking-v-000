@@ -12,7 +12,8 @@ class BankAccount
   
 # create deposit instance method
   # - this method should change the balance to the amount of the deposit + the original balance
-  def deposit 
-    
+  def deposit(amount)
+ 
+    @balance += amount
   end 
 end
