@@ -1,6 +1,10 @@
+require 'pry' 
+
 class BankAccount
 # create attr_reader for name - so that name cannot be changed 
   attr_reader :name, :balance, :status
+  attr_writer :balance, :status
+ # attr_accessor :balance 
 # create initialize method w/argument (name) 
   def initialize(name)
     @name = name
@@ -25,7 +29,12 @@ class BankAccount
   # create valid method
     # this method should verify an open status and a balance greater than 0 
   def valid?
-    
+   @status == "open" && @balance == 1000
   end 
   
+  # create close_account method 
+    # this method should change acct status to "closed"
+  def close_account 
+    @status = "closed" 
+  end 
 end
