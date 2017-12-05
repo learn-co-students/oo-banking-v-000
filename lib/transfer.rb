@@ -23,5 +23,12 @@ class Transfer
     receiver.valid?
   end 
   
+# create execute_transaction method 
+  # - takes transfer amount @amount subtracts from sender and adds to receiver balance 
+  def execute_transaction
+    sender.balance -= @amount
+    receiver.balance += @amount
+    @status = "complete"
+  end 
   
 end
