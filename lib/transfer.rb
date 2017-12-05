@@ -18,7 +18,10 @@ class Transfer
   
 # create valid? method that checks that both accounts are valid
   # - should be able to run same valid? method from BankAcct
-  
+  def valid?
+    sender.valid?
+    receiver.valid?
+  end 
   
   
 end
