@@ -2,7 +2,8 @@ require 'pry'
 
 class Transfer
   # create initialize method 
-  attr_accessor :sender, :receiver, :status 
+  attr_accessor :sender, :receiver, :status
+  aatr_reader :amount
   def initialize(sender, receiver, status)
     
     # - method should initialize with the following
@@ -13,6 +14,7 @@ class Transfer
     # - status of "pending"
     @status = "pending"
     # - transfer amount = 50
+    @amount = 50
   end 
   
 end
