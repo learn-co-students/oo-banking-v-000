@@ -1,10 +1,11 @@
 class BankAccount
 # create attr_reader for name - so that name cannot be changed 
-  attr_reader :name, :balance
+  attr_reader :name, :balance, :status
 # create initialize method w/argument (name) 
   def initialize(name)
     @name = name
     @balance = 1000
+    @status = "open"
   end 
 # add balance of $1000 to initialize method
 # initialize with a status of open (instance variable)
