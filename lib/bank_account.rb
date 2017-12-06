@@ -29,7 +29,7 @@ class BankAccount
   # create valid method
     # this method should verify an open status and a balance greater than 0 
   def valid?
-   @status == "open" && @balance == 1000
+   @status == "open" && @balance > 0 
   end 
   
   # create close_account method 
