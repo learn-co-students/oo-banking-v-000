@@ -2,7 +2,8 @@ require 'pry'
 
 class Transfer
   # create initialize method 
-  attr_accessor :sender, :receiver, :status, :amount
+  attr_accessor :sender, :receiver, :status
+  attr_reader :amount
  
   def initialize(sender, receiver, status)
     # - method should initialize with the following
@@ -26,15 +27,15 @@ class Transfer
 # create execute_transaction method 
   # - takes transfer amount @amount subtracts from sender and adds to receiver balance 
   def execute_transaction
-   
-      if @status != "complete"
+    if @amount > sender.balance
+       "Transaction rejected. Please check your account balance."
+    
+    elsif self.status != "complete" && sender.balance == 1000 && @amount < sender.balance && sender.valid?
         sender.balance -= @amount
         receiver.balance += @amount
         @status = "complete"
-      end 
-       if @status == "open" && @balance == 1000
-         return "Transaction rejected. Please check your account balance."
-          
+      
+    # @status != "closed" && @status&& sender.balance == 1000 && receiver.balance == 1000 && @amount < sender.balance 
 ##      elsif @status != "open" && @balance != 1000
 ##        "Transaction rejected. Please check your account balance."
 #        @status = "rejected"
@@ -47,7 +48,7 @@ class Transfer
 #       "Transaction rejected. Please check your account balance."
 #
 #    
-       end 
+      end     
   end 
   
   end
