@@ -1,4 +1,5 @@
 require 'pry'
+
 describe 'Transfer' do
 
   let(:avi) { BankAccount.new("Avi") }
@@ -28,6 +29,8 @@ describe 'Transfer' do
         expect(transfer.amount).to eq(50)
       end
     end
+
+
 
     describe '#valid?' do
       it "can check that both accounts are valid" do
