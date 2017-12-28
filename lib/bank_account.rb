@@ -1,12 +1,7 @@
 class BankAccount
-#==========================================
-  # INSTANCE ATTRIBUTES
-#==========================================
 attr_accessor :balance, :status
 attr_reader :name
-#==========================================  
-  # INSTANCE
-#==========================================
+
   def initialize(name)
     @name = name
     self.balance = 1000
@@ -28,5 +23,5 @@ attr_reader :name
   def close_account
     self.status = "closed"
   end
-#==========================================
+
 end

@@ -1,11 +1,6 @@
 class Transfer
-#=========================================================
-  # INSTANCE ATTRIBUTES
-#=========================================================
 attr_accessor :sender, :receiver, :amount, :status
-#=========================================================  
-  # INSTANCE
-#=========================================================
+
   def initialize(sender, receiver, amount)
     self.sender = sender
     self.receiver = receiver
@@ -24,8 +19,7 @@ attr_accessor :sender, :receiver, :amount, :status
   def reverse_transfer
     if self.status == "complete" then self.reverse end
   end
-  
-#=======================HELPERS============================  
+
   def uniq_and_valid_amount
     self.status == "pending" and self.sender.balance >= self.amount
   end
@@ -46,5 +40,5 @@ attr_accessor :sender, :receiver, :amount, :status
     self.receiver.balance -= self.amount
     self.status = "reversed"
   end
-#========================================================== 
+
 end
