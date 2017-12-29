@@ -1,3 +1,5 @@
+require 'pry'
+
 describe "BankAccount" do
 
   let(:avi) { BankAccount.new("Avi") }
@@ -46,6 +48,7 @@ describe "BankAccount" do
       @broke.balance = 0
       @closed = BankAccount.new("Beth Behrs")
       @closed.status = "closed"
+      # binding.pry
       expect(avi.valid?).to eq(true)
       expect(@broke.valid?).to eq(false)
       expect(@closed.valid?).to eq(false)
