@@ -2,8 +2,8 @@ require 'pry'
 require_relative '../lib/bank_account.rb'
 
 class Transfer
-  attr_accessor :sender, :receiver, :status
-  attr_reader :amount
+  attr_accessor :status
+  attr_reader :amount, :sender, :receiver
   @@statuses = ['pending', 'complete', 'rejected', 'reversed']
   def initialize(sender, receiver, amount)
     @sender = sender
