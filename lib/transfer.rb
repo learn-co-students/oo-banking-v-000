@@ -1,41 +1,48 @@
+require "pry"
 class Transfer
-  attr_accessor :status
-  attr_reader :sender, :receiver, :amount
+
+  attr_accessor :sender, :receiver, :status, :amount
 
   def initialize(sender, receiver, amount)
     @sender = sender
     @receiver = receiver
-    @amount = amount
     @status = "pending"
+    @amount = amount
   end
 
   def valid?
-    @sender.valid? && @receiver.valid? ? true : false
+    if self.sender.valid? == true && self.receiver.valid? == true && self.sender.balance > @amount
+      # && the amount of the transfer is less than the amount of the senders balance
+      true
+    else
+      false
+    end
   end
 
   def execute_transaction
-    #so, the accounts must be VALID,
-    #transfer must be PENDING, and
-    #the amount of the SENDER must be less than their balance.
+    if self.valid? == true && self.status == "pending"
+      @receiver.deposit(@amount)
+      @sender.deposit(-@amount)
+      self.status = "complete"
+      # binding.pry
 
-    if self.valid? && self.status == "pending" && @sender.balance >= @amount
-      @sender.balance -= @amount
-      @receiver.balance += @amount
-      @status = "complete"
     else
-      @status = "rejected"
-      status_message = "Transaction rejected. Please check your account balance."
+      self.status = "rejected"
+      phrase = "Transaction rejected. Please check your account balance."
     end
+
   end
 
   def reverse_transfer
-    #status of Transfer must be "complete"
-    #un-do the balances
-    if self.status == "complete"
-      @sender.balance += @amount
-      @receiver.balance -= @amount
-      @status = "reversed"
+    #status must be "complete" ...
+    #@amount must be added to sender and minus-ed from receiver
+    #status must be changed to reversed
+    if @status == "complete"
+      @sender.deposit(@amount)
+      @receiver.deposit(-@amount)
+      self.status = "reversed"
     end
+
   end
 
 end

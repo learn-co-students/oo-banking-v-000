@@ -1,27 +1,35 @@
+require 'pry'
 class BankAccount
-  attr_accessor :balance, :status
   attr_reader :name
+  attr_accessor :balance, :status
 
   def initialize(name)
     @name = name
     @balance = 1000
-    @status = "open"
+    @status = 'open'
   end
 
   def deposit(amount)
-    @balance += amount #Should this method validate whether #amount is a number?
+    self.balance += amount
+
   end
 
   def display_balance
-    display_phrase = "Your balance is $#{self.balance}."
+    phrase = "Your balance is $#{self.balance}."
+    # binding.pry
   end
 
   def valid?
-    @balance > 0 && @status == "open" ? true : false
+    if self.balance > 0 && self.status == 'open'
+      true
+    else
+      false
+    end
   end
 
   def close_account
-    @status = "closed"
+    self.status = "closed"
   end
+
 
 end
