@@ -1,6 +1,5 @@
 require 'pry'
 describe 'Transfer' do
-  require_relative '../lib/bank_account.rb'
 
   let(:avi) { BankAccount.new("Avi") }
   let(:amanda) { BankAccount.new("Amanda") }
@@ -21,17 +20,17 @@ describe 'Transfer' do
         expect(transfer.receiver).to eq(avi)
       end
 
-      xit "always initializes with a status of 'pending'" do
+      it "always initializes with a status of 'pending'" do
         expect(transfer.status).to eq("pending")
       end
 
-      it "initializes with a transfer amount" do
+      xit "initializes with a transfer amount" do
         expect(transfer.amount).to eq(50)
       end
     end
 
     describe '#valid?' do
-      it "can check that both accounts are valid" do
+      xit "can check that both accounts are valid" do
         expect(avi.valid?).to eq (true)
         expect(amanda.valid?).to eq(true)
         expect(transfer.valid?).to eq(true)
