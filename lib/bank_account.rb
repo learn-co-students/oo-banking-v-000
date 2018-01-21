@@ -1,6 +1,6 @@
 class BankAccount
   attr_accessor   :balance,  :status, :amount
-  attr_reader   :name,  :reciever,
+  attr_reader   :name,  :reciever
 
   def initialize (name)
     @name = name
@@ -19,6 +19,7 @@ class BankAccount
   def valid?
     balance > 0  && status == "open"
   end
+
 
   def close_account
     self.status = "closed"

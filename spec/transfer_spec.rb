@@ -1,5 +1,6 @@
 require 'pry'
 describe 'Transfer' do
+  require_relative '../lib/bank_account.rb'
 
   let(:avi) { BankAccount.new("Avi") }
   let(:amanda) { BankAccount.new("Amanda") }
@@ -12,7 +13,7 @@ describe 'Transfer' do
         expect(transfer).to be_a(Transfer)
       end
 
-      xit "initializes with a sender" do
+      it "initializes with a sender" do
         expect(transfer.sender).to eq(amanda)
       end
 
@@ -20,20 +21,17 @@ describe 'Transfer' do
         expect(transfer.receiver).to eq(avi)
       end
 
-      it "always initializes with a status of 'pending'" do
+      xit "always initializes with a status of 'pending'" do
         expect(transfer.status).to eq("pending")
       end
 
-      #elements.each("//XPath") do |node|
-
-      #end
-      xit "initializes with a transfer amount" do
+      it "initializes with a transfer amount" do
         expect(transfer.amount).to eq(50)
       end
     end
 
     describe '#valid?' do
-      xit "can check that both accounts are valid" do
+      it "can check that both accounts are valid" do
         expect(avi.valid?).to eq (true)
         expect(amanda.valid?).to eq(true)
         expect(transfer.valid?).to eq(true)
