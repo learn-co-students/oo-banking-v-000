@@ -9,7 +9,7 @@ class BankAccount
   end
 
   def deposit(money)
-    self.balance = balance + money
+    self.balance += money
   end
 
   def display_balance
@@ -17,7 +17,7 @@ class BankAccount
   end
 
   def valid?
-    (balance > 0) && (status == "open") ? true : false
+    balance > 0 && status == "open"
   end
 
   def close_account
