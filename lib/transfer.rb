@@ -1,3 +1,6 @@
 class Transfer
-  # your code here
+
+  def initialize(transferer, transferee, transfer_amount)
+    
+  end
 end
