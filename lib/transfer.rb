@@ -1,5 +1,3 @@
-require "pry"
-
 class Transfer
   attr_accessor :status, :amount, :count
   attr_reader :sender, :receiver
@@ -17,7 +15,7 @@ class Transfer
   end
 
   def execute_transaction
-    if valid? && status == "pending" && sender.balance >= @amount
+    if valid? && status == "pending" && sender.balance >= amount
       sender.balance -= amount
       receiver.balance += amount
       @status = "complete"
