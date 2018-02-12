@@ -1,5 +1,4 @@
 class BankAccount
-
   attr_accessor :balance, :status
   attr_reader :name
 
@@ -10,7 +9,7 @@ class BankAccount
   end
 
   def deposit(amount)
-    amount > 0 ? self.balance += amount : "Please enter an amount greater than 0"
+    self.balance += amount
   end
 
   def display_balance
