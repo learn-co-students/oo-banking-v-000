@@ -29,7 +29,7 @@ class Transfer
       @receiver.balance -= @amount
       @status = 'reversed'
     else
-      ""
+      "Transfer has not been completed yet. Please try again once transfer is complete."
     end
   end
 
