@@ -47,6 +47,7 @@ describe 'Transfer' do
     end
 
     describe '#execute_transaction' do
+
       it "can execute a successful transaction between two accounts" do
         transfer.execute_transaction
         expect(amanda.balance).to eq(950)
