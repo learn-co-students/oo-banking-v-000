@@ -14,7 +14,7 @@ class Transfer
 
   def execute_transaction
     # If the sender's account is valid and the sender has enough money, transfer the money to the receiver's account. The transfer can only happen once. If the sender's account is invalid or the sender doesn't have enough money, reject the transaction.
-    if sender.valid? && sender.balance > amount && self.status != "complete"
+    if valid? && self.status != "complete"
       sender.balance -= amount
       receiver.balance += amount
       self.status = "complete"
