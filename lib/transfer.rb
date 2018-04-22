@@ -12,11 +12,14 @@ class Transfer
     if @sender && @receiver
       true
     end
-    self.valid?
+    
   end
   
   def execute_transaction
-    
+    #@sender - @amount
+    #@receiver + @amount
+    @status = "rejected"
+    "Transaction rejected. Please check your account balance."
   end
   
   def reverse_transfer
