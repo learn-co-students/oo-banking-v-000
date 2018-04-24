@@ -1,4 +1,5 @@
 require 'pry'
+require_relative 'spec_helper.rb'
 describe 'Transfer' do
 
   let(:avi) { BankAccount.new("Avi") }
@@ -24,19 +25,19 @@ describe 'Transfer' do
         expect(transfer.status).to eq("pending")
       end
 
-      xit "initializes with a transfer amount" do
+      it "initializes with a transfer amount" do
         expect(transfer.amount).to eq(50)
       end
     end
 
     describe '#valid?' do
-      xit "can check that both accounts are valid" do
+      it "can check that both accounts are valid" do
         expect(avi.valid?).to eq (true)
         expect(amanda.valid?).to eq(true)
         expect(transfer.valid?).to eq(true)
       end
 
-      xit "calls on the sender and reciever's #valid? methods" do
+      it "calls on the sender and reciever's #valid? methods" do
         transfer_class = File.read("lib/transfer.rb")
 
         expect(amanda).to receive(:valid?).and_return(true)
@@ -47,14 +48,14 @@ describe 'Transfer' do
     end
 
     describe '#execute_transaction' do
-      xit "can execute a successful transaction between two accounts" do
+      it "can execute a successful transaction between two accounts" do
         transfer.execute_transaction
         expect(amanda.balance).to eq(950)
         expect(avi.balance).to eq(1050)
         expect(transfer.status).to eq("complete")
       end
 
-      xit "each transfer can only happen once" do
+      it "each transfer can only happen once" do
         transfer.execute_transaction
         expect(amanda.balance).to eq(950)
         expect(avi.balance).to eq(1050)
@@ -64,14 +65,14 @@ describe 'Transfer' do
         expect(avi.balance).to eq(1050)
       end
 
-      xit "rejects a transfer if the sender doesn't have a valid account" do
+      it "rejects a transfer if the sender doesn't have a valid account" do
         expect(bad_transfer.execute_transaction).to eq("Transaction rejected. Please check your account balance.")
         expect(bad_transfer.status).to eq("rejected")
       end
     end
 
     describe '#reverse_transfer' do
-      xit "can reverse a transfer between two accounts" do
+      it "can reverse a transfer between two accounts" do
         transfer.execute_transaction
         expect(amanda.balance).to eq(950)
         expect(avi.balance).to eq(1050)
@@ -81,7 +82,7 @@ describe 'Transfer' do
         expect(transfer.status).to eq("reversed")
       end
 
-      xit "it can only reverse executed transfers" do
+      it "it can only reverse executed transfers" do
         transfer.reverse_transfer
         expect(amanda.balance).to eq(1000)
         expect(avi.balance).to eq(1000)
