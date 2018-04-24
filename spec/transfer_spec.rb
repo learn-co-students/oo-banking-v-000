@@ -1,4 +1,5 @@
 require 'pry'
+require_relative 'spec_helper.rb'
 describe 'Transfer' do
 
   let(:avi) { BankAccount.new("Avi") }
