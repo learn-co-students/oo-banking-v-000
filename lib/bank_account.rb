@@ -18,4 +18,15 @@ class BankAccount
     "Your balance is $#{deposit(balance)}."
   end
 
+  def valid?
+    if @balance > 0 && @status == "open"
+        true
+    else
+       false
+    end
+  end
+
+  def close_account
+    @status = "closed"
+  end
 end
