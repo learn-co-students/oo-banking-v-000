@@ -21,7 +21,7 @@ describe "BankAccount" do
       end
 
       it "can't change its name" do
-        expect { avi.name = "Bob" }.to raise_error
+        expect { avi.name = "Bob" }.to raise_error NoMethodError
       end
     end
   end
