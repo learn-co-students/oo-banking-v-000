@@ -10,7 +10,7 @@ class BankAccount
   end
   
   def name=(name)
-    unless @name == nil
+    unless @name === nil
       raise NameError, "Name already set as #{name}"
     else
       @name = name
@@ -23,6 +23,18 @@ class BankAccount
   
   def display_balance
     "Your balance is $#{self.balance}."
+  end
+  
+  def valid?
+    if self.balance === 0 || self.status === "closed"
+      false 
+    else
+      true
+    end
+  end
+  
+  def close_account
+    self.status = "closed"
   end
   
 end
