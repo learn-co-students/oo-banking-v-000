@@ -10,8 +10,11 @@ class BankAccount
   end
   
   def name=(name)
-    raise NameError, "Name already set as #{name}" unless @name == nil
-    @name = name if @name == nil
+    unless @name == nil
+      raise NameError, "Name already set as #{name}"
+    else
+      @name = name
+    end
   end
   
 end
