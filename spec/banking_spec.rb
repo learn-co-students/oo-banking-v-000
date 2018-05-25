@@ -1,3 +1,6 @@
+# suppress long error about raise error matcher
+RSpec::Expectations.configuration.warn_about_potential_false_positives = false
+
 describe "BankAccount" do
 
   let(:avi) { BankAccount.new("Avi") }
