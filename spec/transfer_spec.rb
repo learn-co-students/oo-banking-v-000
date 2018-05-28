@@ -1,4 +1,8 @@
 require 'pry'
+
+# suppress long error about raise error matcher
+RSpec::Expectations.configuration.warn_about_potential_false_positives = false
+
 describe 'Transfer' do
 
   let(:avi) { BankAccount.new("Avi") }
