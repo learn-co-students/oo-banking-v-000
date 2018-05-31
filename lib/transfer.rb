@@ -6,9 +6,7 @@ class Transfer
     @amount = amount
   end
   
-  attr_reader :sender, :receiver
-  
-  attr_accessor :amount, :status
+  attr_accessor :sender, :receiver, :amount, :status
 
   def valid?
     @sender.valid? && @receiver.valid? ? true : false
