@@ -1,3 +1,5 @@
+require 'pry'
+
 class Transfer
   def initialize(sender, receiver, amount)
     @sender = sender
@@ -26,10 +28,10 @@ class Transfer
   end
   
   def reverse_transfer
-    if valid? && execute_transaction == "complete"
+    if @status == "complete"
       @sender.balance += @amount
       @receiver.balance -= @amount
-      @status == "reversed"
+      @status = "reversed"
     end
   end
 end
