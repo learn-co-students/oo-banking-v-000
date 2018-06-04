@@ -11,7 +11,7 @@ attr_reader :name
 
   def deposit(money)
     #add deposit to balance
-    money
+    @balance << money
 
   end
 
