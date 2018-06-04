@@ -11,7 +11,7 @@ attr_reader :name
 
   def deposit
     transfer = Transfer.new(name)
-    self << transer
+    self << transfer
   end
 
 end
