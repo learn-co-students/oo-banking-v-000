@@ -11,8 +11,8 @@ attr_reader :name
 
   def deposit
     #add deposit to balance
-    money = 
-    self << money
+
+    self.money = balance
 
   end
 
