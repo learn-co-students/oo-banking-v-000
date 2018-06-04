@@ -11,7 +11,7 @@ attr_reader :name
 
   def deposit
     cat = Cat.new(name)
-    pets[:cats] << cat
+    @balance << money
   end
 
 end
