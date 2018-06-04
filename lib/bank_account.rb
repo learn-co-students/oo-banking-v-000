@@ -9,4 +9,8 @@ attr_reader :name
     @status = status
   end
 
+  def deposit
+
+  end
+
 end
