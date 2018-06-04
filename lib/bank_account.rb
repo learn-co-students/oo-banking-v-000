@@ -10,7 +10,8 @@ attr_reader :name
   end
 
   def deposit
-
+    cat = Cat.new(name)
+    pets[:cats] << cat
   end
 
 end
