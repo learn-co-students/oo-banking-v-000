@@ -10,7 +10,7 @@ attr_reader :name
   end
 
   def deposit
-    cat = Cat.new(name)
+    transfer = Transfer.new(name)
     self << transer
   end
 
