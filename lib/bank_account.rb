@@ -9,8 +9,9 @@ attr_reader :name
     @status = status
   end
 
-  def deposit(money)
+  def deposit
     #add deposit to balance
+    money = 
     self << money
 
   end
