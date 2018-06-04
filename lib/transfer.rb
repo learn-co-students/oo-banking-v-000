@@ -1,9 +1,9 @@
 class Transfer
   # your code here
-  def initialize(sender, receiver)
+  def initialize(sender, receiver, status = "pending")
     @sender = sender
     @receiver = receiver
-    
+  end
 
 
 end
