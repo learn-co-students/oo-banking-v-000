@@ -4,8 +4,8 @@ attr_accessor :name
 
 attr_writer :balance, :status
 
-  def initialize(status = open)
-    @balance = $1000
+  def initialize(status = "open", balance = 1000)
+    @balance = balance
     @status = status
   end
 
