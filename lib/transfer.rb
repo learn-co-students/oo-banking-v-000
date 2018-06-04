@@ -8,6 +8,7 @@ attr_accessor :sender, :receiver
     @sender = sender
     @receiver = receiver
     @status = pending
+    @amount = amount
   end
 
 
