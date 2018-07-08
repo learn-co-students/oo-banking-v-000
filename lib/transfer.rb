@@ -1,3 +1,5 @@
+require 'pry'
+
 class Transfer
   attr_accessor :sender, :receiver, :amount, :status
 
@@ -6,5 +8,17 @@ class Transfer
     @receiver = receiver
     @status = "pending"
     @amount = amount
+  end
+
+  def valid?
+    sender.valid? && receiver.valid? ? true : false
+  end
+
+  def execute_transaction
+
+  end
+
+  def reverse_transfer
+
   end
 end
