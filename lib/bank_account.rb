@@ -2,22 +2,18 @@ class BankAccount
   attr_accessor :status, :balance
   attr_reader :name
 
-  ACCOUNT = []
-
   def initialize(name)
     @name = name
     @balance = 1000
     @status = "open"
   end
 
-  def deposit(currency)#double check later
-    @balance += currency
-    ACCOUNT << balance
+  def deposit(amount)
+    @balance += amount
   end
 
-  def withdraw(currency)
-    @balance -= currency
-    ACCOUNT << balance
+  def withdraw(amount)
+    @balance -= amount
   end
 
   def display_balance
@@ -25,7 +21,7 @@ class BankAccount
   end
 
   def valid?
-    self.status == "open" && self.balance == 1000 ? true : false
+    self.status == "open" && self.balance > 0 ? true : false
   end
 
   def close_account
