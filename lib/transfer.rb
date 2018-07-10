@@ -20,21 +20,21 @@ class Transfer
   def execute_transaction
     if @sender.balance < @amount
       @status = "rejected"
-      return "Transaction rejected.  Please check your account balance."
+      return "Transaction rejected. Please check your account balance."
     elsif
-      @status = "complete"
+      @status == "complete"
       puts "Transaction was already completed."
     else
-      @sender.deposit(@amount * -1)
-      @receiver.deposit(@amount)
+      @sender.balance -= @amount
+      @receiver.deposit += @amount
       @status = "complete"
     end
   end
   
   def reverse_transfer
-    if @status = "complete"
-      @sender.deposit(@amount)
-      @receiver.deposit(@amount * -1)
+    if @status == "complete"
+      @sender.deposit( @amount ) 
+      @receiver.deposit( @amount * -1)
       @status = "reversed"
     end
   end
