@@ -2,9 +2,9 @@ class BankAccount
   
   attr_reader :name
   
-  def initialize(name, status, balance)
+  def initialize(name)
     @name = name
-    @status = open
+    @status = "open"
     @balance = "1000"
   end
   
@@ -18,6 +18,10 @@ class BankAccount
   
   def valid
     @status = open && @balance >= 0
+  end
+  
+  def close_account
+    @status = "closed"
   end
   
 end
