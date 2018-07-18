@@ -31,7 +31,6 @@ class Transfer
     @sender.deposit(@prev_amount)
     @receiver.deposit(-@prev_amount)
     @status = "reversed"
-    binding.pry
   end
 
 end
