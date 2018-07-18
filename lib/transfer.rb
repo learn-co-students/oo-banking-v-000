@@ -1,6 +1,6 @@
 class Transfer
 
-  attr_accessor :status, :amount, :sender, :receiver
+  attr_accessor :status, :amount, :sender, :receiver, :prev_amount
 
   def initialize(sender, receiver, amount)
     @sender = sender
@@ -18,6 +18,7 @@ class Transfer
       @sender.deposit(-@amount)
       @receiver.deposit(@amount)
       @status = "complete"
+      @prev_amount = @amount
       @amount = 0
     else
       @status = "rejected"
@@ -26,6 +27,11 @@ class Transfer
     end
   end
 
-
+  def reverse_transfer
+    @sender.deposit(@prev_amount)
+    @receiver.deposit(-@prev_amount)
+    @status = "reversed"
+    binding.pry
+  end
 
 end
