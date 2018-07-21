@@ -11,6 +11,8 @@ class Transfer
     @status = "pending"
   end
 
+  @@all_transactions = []
+
   def valid?
     @sender.valid? && @receiver.valid?
   end
