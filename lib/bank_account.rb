@@ -1,6 +1,7 @@
 class BankAccount
 
   attr_accessor :balance, :status
+  attr_reader :name
 
   def initialize(name)
     @name = name
@@ -8,10 +9,6 @@ class BankAccount
     @status = "open"
   end
 
-  def name
-    @name.dup.freeze
-
-  end
 
   def deposit(money)
 
