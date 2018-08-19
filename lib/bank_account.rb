@@ -24,6 +24,7 @@ class BankAccount
       false
     end 
   end
+  # or just self.balance > 0 && self.status == "open" is okay
   
   def close_account
     self.status = "closed"
