@@ -26,4 +26,7 @@ def valid?
   end
 end
 
+def close_account
+  self.status = "closed"
+end
 end
