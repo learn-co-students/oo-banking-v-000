@@ -5,13 +5,17 @@ class BankAccount
 
 def initialize(name)
   @bank_acct = bank_acct
-  @bank_acct = []
   @name = name
   @balance = 1000
   @status = "open"
 end
 
 def deposit(money)
-  @bank_acct << money
+  self.balance += money
 end
+
+def display_balance
+  return "Your balance is $#{balance}."
+end
+
 end
