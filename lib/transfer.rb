@@ -14,21 +14,21 @@ def valid?
 end
 
 def execute_transaction
- if sender.valid? && receiver.valid? && @amount <= sender.balance
-   @receiver.balance += @amount 
-   @sender.balance -= @amount 
-   @status = "complete"
- else 
-  @status = "rejected"
-  "Transaction rejected. Please check your account balance."
-end
-end
+  if sender.valid? && receiver.valid? && @amount <= sender.balance && self.status == "pending" 
+     receiver.balance += @amount 
+     sender.balance -= @amount 
+     self.status = "complete"
+  else 
+    self.status = "rejected"
+    "Transaction rejected. Please check your account balance."
+ end
+
 def reverse_transfer
-    if valid? && receiver.balance > amount && self.status == "complete" #checks if status is complete. also, the class method for valid? calls valid? on both the receiver and sender
+  if valid? && receiver.balance > amount && self.status == "complete" 
       receiver.balance -= amount
       sender.balance += amount
       self.status = "reversed"
-    else
+  else
       reject_transfer
     end
   end
@@ -38,7 +38,4 @@ def reverse_transfer
     "Transaction rejected. Please check your account balance."
   end
 end
-
-
-
 end
