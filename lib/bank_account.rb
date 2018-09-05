@@ -12,6 +12,7 @@ class BankAccount
     @balance = @balance + money
   end
 
+
   def display_balance
     "Your balance is $#{@balance}."
   end
@@ -20,5 +21,7 @@ class BankAccount
     @status == "open" && @balance > 0
   end
   
-  def close_
+  def close_account
+    @status = "closed"
+  end
 end
