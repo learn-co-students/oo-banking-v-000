@@ -73,8 +73,8 @@ describe 'Transfer' do
     describe '#reverse_transfer' do
       it "can reverse a transfer between two accounts" do
         transfer.execute_transaction
-        expect(amanda.balance).to eq(950)
         expect(avi.balance).to eq(1050)
+        expect(amanda.balance).to eq(950)
         transfer.reverse_transfer
         expect(avi.balance).to eq(1000)
         expect(amanda.balance).to eq(1000)
