@@ -18,6 +18,19 @@ class BankAccount
     p "Your balance is $#{@balance}."
   end
 
+  def valid?
+    if @status == "open" && @balance >= 1000
+      return true
+    else
+      return false
+    end
+  end
+  
+  def close_account
+    @status = "closed"
+  end
+  
+  
 
 
 end
