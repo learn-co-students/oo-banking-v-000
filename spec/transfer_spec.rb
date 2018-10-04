@@ -43,7 +43,7 @@ describe 'Transfer' do
 
       transfer.valid?
     end
-  end
+  end#
 
   describe '#execute_transaction' do
     it "can execute a successful transaction between two accounts" do
