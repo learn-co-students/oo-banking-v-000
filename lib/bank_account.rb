@@ -1,6 +1,6 @@
 class BankAccount
-  attr_accessor :balance, :status, :broke
   attr_reader :name
+  attr_accessor :balance, :status
   
   def initialize(name)
     @name = name
@@ -9,23 +9,16 @@ class BankAccount
   end 
   
   def deposit(amount)
-    self.balance = balance + amount
+    self.balance += amount
   end
   
   def display_balance
-    "Your balance is $#{self.balance}."
+    "Your balance is $#{balance}."
   end 
   
   def valid?
-    if self.balance == 0
-      false
-    elsif 
-      self.status == "closed"
-      false 
-    else 
-      true 
-    end 
-  end
+    balance > 0 && status == "open"
+  end 
   
   def close_account
     self.status = "closed"
