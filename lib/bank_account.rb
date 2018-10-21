@@ -9,8 +9,8 @@ class BankAccount
    @status = "open"  #always initializes with a status of 'open'
  end 
  
-  def deposit(amount)   #can deposit money into its account
-    @balance += amount
+  def deposit(cash)   #can deposit money into its account
+    @balance += cash
     
   end 
   
@@ -19,11 +19,12 @@ class BankAccount
   end 
   
   def valid? 
-  if @status == "open" && @balance > 0  
-    true 
-  else 
-    false 
-   end 
+      @status == "open" && @balance > 0 ? true : false
+  #if @status == "open" && @balance > 0  
+   # true 
+  #else 
+    #false 
+   #end 
   end 
   
   def close_account
