@@ -1,3 +1,4 @@
+require 'pry'
 class BankAccount
   attr_accessor :balance, :status
   attr_reader :name 
@@ -17,11 +18,11 @@ class BankAccount
   end
   
   def valid?
-    if @status = "closed" || @balance < 0
-      false
-    else
+    if @status == "open" && @balance > 0
       true
-    end 
+    else
+      false
+    end
   end
   
   def close_account
