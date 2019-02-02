@@ -11,17 +11,18 @@ class Transfer
   end
 
   def valid?
-    sender.valid? && receiver.valid?
+    @sender.valid? && @receiver.valid?
   end
 
-  def execute_transation(amount)
+  def execute_transaction
+    if @sender.balance < @amount
+      @status = "rejected"
+      return "Transaction rejected. Please check your account balance."
     # sender amount moved to receiver balance (complete)
-    if sender.account.balance < 0
-      "rejected"
-    # transfer can only happen once (complete)
-    elsif condition
+    elsif @sender.balance
 
-    # if sender account is not valid, reject transfer (rejected)
+
+    # transfer can only happen once (complete)
     else
 
     end
