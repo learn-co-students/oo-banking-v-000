@@ -16,8 +16,8 @@ class Transfer
 
   def execute_transation(amount)
     # sender amount moved to receiver balance (complete)
-    if condition
-
+    if sender.account.balance < 0
+      "rejected"
     # transfer can only happen once (complete)
     elsif condition
 
