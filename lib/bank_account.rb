@@ -2,16 +2,17 @@ require "pry"
 
 class BankAccount
   
-  attr_accessor :balance, :deposit, :accounts, :status
+  attr_accessor :balance, :deposit, :status 
+  #:accounts 
   attr_reader :name, :sender, :receiver 
   
-  @@accounts = {}
+  #@@accounts = {}
 
  def initialize(name)
    @name = name 
    @balance = 1000
    @status = "open"
-   @@accounts[name] = [balance, status] 
+   #@@accounts[name] = [balance, status] 
  end
  
  def deposit(deposit)
