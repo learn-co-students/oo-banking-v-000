@@ -24,10 +24,10 @@ class BankAccount
  end
  
  def valid?
-   if balance <= 0 || status != "open"
-     return false 
+   if balance > 0 && status == "open"
+     return true
    else
-     return true 
+     return false  
    end
  end
  
