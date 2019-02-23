@@ -12,7 +12,7 @@ attr_reader :sender, :name, :amount, :receiver
     @transactions = []
   end 
 
-  def valid?
+  def valid?(receiver)
     @sender == sender && @receiver == receiver
   end 
 
