@@ -31,9 +31,10 @@ class Transfer
     if self.status == "complete" && receiver.valid? && receiver.balance >= @amount_record
       receiver.balance -= @amount_record
       sender.balance += @amount_record
-      @amount_record = 0
+
       self.status = "reversed"
-    else nil
+    else
+      nil
     end
   end
 
