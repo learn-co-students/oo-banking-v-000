@@ -24,4 +24,3 @@ class BankAccount
     self.status = "closed"
   end
 end
-© 2019 GitHub, Inc.
