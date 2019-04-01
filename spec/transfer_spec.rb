@@ -1,5 +1,5 @@
 require 'pry'
-puts describe 'Transfer' do
+describe 'Transfer' do
 
   let(:avi) { BankAccount.new("Avi") }
   let(:amanda) { BankAccount.new("Amanda") }
@@ -12,24 +12,24 @@ puts describe 'Transfer' do
         expect(transfer).to be_a(Transfer)
       end
 
-  puts   it "initializes with a sender" do
+     it "initializes with a sender" do
         expect(transfer.sender).to eq(amanda)
       end
 
-    puts  it "initializes with a receiver" do
+      it "initializes with a receiver" do
         expect(transfer.receiver).to eq(avi)
       end
 
-    puts  it "always initializes with a status of 'pending'" do
+   it "always initializes with a status of 'pending'" do
         expect(transfer.status).to eq("pending")
       end
 
-    puts  it "initializes with a transfer amount" do
+      it "initializes with a transfer amount" do
         expect(transfer.amount).to eq(50)
       end
     end
 
-    puts describe '#valid?' do
+   describe '#valid?' do
       it "can check that both accounts are valid" do
         expect(avi.valid?).to eq (true)
         expect(amanda.valid?).to eq(true)
@@ -46,7 +46,7 @@ puts describe 'Transfer' do
       end
     end
 
-    puts describe '#execute_transaction' do
+     describe '#execute_transaction' do
       it "can execute a successful transaction between two accounts" do
         transfer.execute_transaction
         expect(amanda.balance).to eq(950)
@@ -70,7 +70,7 @@ puts describe 'Transfer' do
       end
     end
 
-  puts  describe '#reverse_transfer' do
+   describe '#reverse_transfer' do
       it "can reverse a transfer between two accounts" do
         transfer.execute_transaction
         expect(amanda.balance).to eq(950)

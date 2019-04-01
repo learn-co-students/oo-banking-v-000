@@ -1,4 +1,4 @@
- puts describe "BankAccount" do
+ describe "BankAccount" do
 
   let(:avi) { BankAccount.new("Avi") }
 
@@ -12,11 +12,11 @@
         expect(avi.name).to eq("Avi")
       end
 
-    puts  it "always initializes with balance of 1000" do
+      it "always initializes with balance of 1000" do
         expect(avi.balance).to eq(1000)
       end
 
-    puts  it "always initializes with a status of 'open'" do
+    it "always initializes with a status of 'open'" do
         expect(avi.status).to eq("open")
       end
 
@@ -26,7 +26,7 @@
     end
   end
 
-  puts describe '#deposit' do
+   describe '#deposit' do
     it "can deposit money into its account" do
       expect(avi.balance).to eq(1000)
       avi.deposit(1000)
@@ -34,13 +34,13 @@
     end
   end
 
-  puts describe '#display_balance' do
+   describe '#display_balance' do
     it "can display its balance" do
       expect(avi.display_balance).to eq("Your balance is $#{avi.balance}.")
     end
   end
 
-  puts describe '#valid?' do
+   describe '#valid?' do
     it "is valid with an open status and a balance greater than 0" do
       @broke = BankAccount.new("Kat Dennings")
       @broke.balance = 0
@@ -52,7 +52,7 @@
     end
   end
 
-  puts describe '#close_account' do
+   describe '#close_account' do
     it "can close its account" do
       avi.close_account
       expect(avi.status).to eq("closed")
