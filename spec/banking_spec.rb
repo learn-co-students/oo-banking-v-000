@@ -21,7 +21,9 @@ describe "BankAccount" do
       end
 
       it "can't change its name" do
-        expect { avi.name = "Bob" }.to eq(false)
+        expect { avi.name = "Bob" }.to raise_error 
+        
+        eq(false)
         #to raise_error = false
         #WARNING: Using the `raise_error` matcher without providing a specific error or message risks false positives, since `raise_error` will match
          #when Ruby raises a `NoMethodError`, `NameError` or `ArgumentError`, potentially allowing the expectation to pass without even executing the metho
