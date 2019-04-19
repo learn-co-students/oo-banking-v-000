@@ -21,17 +21,19 @@ describe "BankAccount" do
       end
 
       it "can't change its name" do
-        expect { avi.name = "Bob" }.to raise_error = false
+        expect { avi.name = "Bob" }.to eq(false)
+        #to raise_error = false
         #WARNING: Using the `raise_error` matcher without providing a specific error or message risks false positives, since `raise_error` will match
          #when Ruby raises a `NoMethodError`, `NameError` or `ArgumentError`, potentially allowing the expectation to pass without even executing the metho
 #d you are intending to call. Actual error raised was #<NoMethodError: undefined method `name=' for #<BankAccount:0x000000017e2498>
-#Did you mean?  name>. Instead consider providing a specific error class or message. This message can be supressed by setting: `RSpec::Expectati
+#Did you mean?  name>. Instead consider providing a specific error class or message. This message can be supressed by setting:
+#`RSpec::Expectati
 #ons.configuration.warn_about_potential_false_positives = false`. Called from /home/jaimejohnsen/oo-banking-v-000/spec/banking_spec.rb:24:in `bl
 #ock (4 levels) in <top (required
 
 
-      end #change the raise_error message to not allow a false positive?
-    end #provide a specific error or message as the method may still run because it is a match however the
+      end
+    end
   end
 
   describe '#deposit' do

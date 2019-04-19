@@ -8,4 +8,11 @@ class BankAccount
     @balance = 1000
     @status = "open"
   end
+  
+ # def method_missing(method, e)
+  # method.to_s == 'name=' ? false : ''
+ #end
+ 
+  def deposit
+  end
 end
