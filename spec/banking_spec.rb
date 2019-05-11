@@ -1,3 +1,4 @@
+require 'pry'
 describe "BankAccount" do
 
   let(:avi) { BankAccount.new("Avi") }
