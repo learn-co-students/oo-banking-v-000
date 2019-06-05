@@ -1,5 +1,7 @@
+require 'pry'
+
 class BankAccount
-  attr_accessor :balance
+  attr_accessor :balance, :status
   attr_reader :name
 
   def initialize(name, balance = 1000)
@@ -32,6 +34,11 @@ class BankAccount
   end
 
   def valid?
-
+    if account = balance != 0 && status != "closed"
+      false
+    elsif account = balance = 0 && status = "closed"
+       true
+    end
+    binding.pry
   end
 end
