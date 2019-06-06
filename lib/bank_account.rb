@@ -34,11 +34,14 @@ class BankAccount
   end
 
   def valid?
-    if account = balance != 0 && status != "closed"
+    if balance > 0 && status == "open"
+      true
+    else
       false
-    elsif account = balance = 0 && status = "closed"
-       true
     end
-    binding.pry
+  end
+
+  def close_account
+    self.status = "closed"
   end
 end
