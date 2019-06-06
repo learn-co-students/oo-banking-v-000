@@ -15,9 +15,9 @@ class BankAccount
   #   @balance
   # end
 
-  def status
-    @status
-  end
+  # def status
+  #   @status
+  # end
 
   def name=(name)
     raise NoMethodError if @name != name
