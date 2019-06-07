@@ -1,5 +1,5 @@
 require 'pry'
-
+# your code here
 class Transfer
   attr_accessor :sender, :receiver, :amount, :status
 
@@ -9,7 +9,6 @@ class Transfer
     @amount = amount
     @status = 'pending'
   end
-  # your code here
 
   def valid?
     if sender && receiver
@@ -34,7 +33,7 @@ class Transfer
   end
 
   def reverse_transfer
-
+    receiver.balance
     # binding.pry
   end
 end
