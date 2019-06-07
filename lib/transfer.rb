@@ -12,31 +12,31 @@ class Transfer
 
   def valid?
     if sender && receiver
-      true
+      # true
     end
     sender.valid? && receiver.valid?
     # binding.pry
   end
 
   def execute_transaction
-      sender.balance = sender.balance - amount
-      # sender.balance
-      receiver.balance = receiver.balance + amount
-      # receiver.balance
+    @execute_transaction ||= if self.valid?
+                          sender.balance = sender.balance - amount
+                          receiver.balance = receiver.balance + amount
+                          end
       self.status = "complete"
-
-      self.amount = 0
-    
       if self.valid? == false
         self.status = "rejected"
         "Transaction rejected. Please check your account balance."
       end
       # binding.pry
-
   end
 
   def reverse_transfer
     receiver.balance = receiver.balance - amount
+    sender.balance = sender.balance + amount
+    if self.execute_transaction
+    end
+    self.status = "reversed"
     # binding.pry
   end
 end
