@@ -12,19 +12,17 @@ class Transfer
   # your code here
 
   def valid?
-    if sender = amount > 0 && status == "pending"
+    if sender && receiver
       true
-    else
-      false
     end
+    sender.valid? && receiver.valid?
     # binding.pry
-
   end
 
-# Transfer instances should be able to reject a transfer if the accounts aren't valid or if the sender
-# doesn't have the money.
-# Transfers start out in a "pending" status. They can be executed and go to a "complete" state.
-# They can also go to a "rejected" status. A completed transfer can also be reversed and go into a "reversed" status.
-#
+  def execute_transaction
+      sender.balance = sender.balance - amount
+      receiver.balance = receiver.balance + amount
+      self.status = "complete"
+  end
 
 end
