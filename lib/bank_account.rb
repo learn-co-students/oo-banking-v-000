@@ -14,10 +14,11 @@ class BankAccount
   end
 
   def display_balance
-    "Your balance is #{@balance}."
+    print "Your current balance is #{self.balance}"
   end
 
   def valid?
+    self.status == "open" && self.balance > 0
   end
 
   def close_account
