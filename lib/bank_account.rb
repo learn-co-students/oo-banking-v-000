@@ -25,11 +25,10 @@ attr_accessor :balance, :status
     else
     return false
     end
-
 end
 
-    def close_account(name)
-      @name = name
+    def close_account
+
       @status = "closed"
     end
 
