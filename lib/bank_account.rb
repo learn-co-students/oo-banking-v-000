@@ -8,7 +8,7 @@ class BankAccount
     @balance = 1000
     @status = "open"
     @broke = 0
-  #  @closed = "closed"
+
   end
 
   def deposit(amount)
@@ -24,7 +24,7 @@ class BankAccount
   end
 
   def close_account
-    @status === "closed"
+    @status = "closed"
   end
 
   end
