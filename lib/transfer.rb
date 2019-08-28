@@ -1,7 +1,6 @@
-require 'pry'
 class Transfer
-attr_reader :sender, :receiver
-attr_accessor :amount, :status
+attr_reader :sender, :receiver, :amount
+attr_accessor :status
   
   def initialize(sender, receiver, amount, status = "pending")
     @sender = sender 
@@ -19,65 +18,28 @@ attr_accessor :amount, :status
   end
   
   def execute_transaction
-    #Transfer.new(sender, receiver, amount, status)
-    if @status == "pending"
-     # binding.pry
-      if sender.balance < amount
-        "Transaction rejected. Please check your account balance."
-      elsif sender.balance >= amount
+    if self.status == "pending"
+      if sender.valid? == true && receiver.valid? == true 
+        if sender.balance >= amount
          sender.balance = sender.balance-amount
-         receiver.balance = receiver.balance+amount
-         @status = "complete"
+          receiver.balance = receiver.balance+amount
+          self.status = "complete"
+        else
+          self.status = "rejected"  
+          "Transaction rejected. Please check your account balance."
+        end
+      else
+        self.status = "rejected"
+        "Transaction rejected. Please check your account balance."
       end
     end
   end
-      
-      
-      #if sender.balance < amount
-       # return "Transaction rejected. Please check your account balance."
-      #elsif sender.balance >= amount
-       # sender.balance = sender.balance-amount
-        #sender.balance
-       # receiver.balance = receiver.balance+amount
-       # receiver.balance
-        #transfer.status == "complete"
-      #end
-    #elsif transfer.status == "complete"
-     # transfer.status
-    #end
-    
-  # binding.pry
-    
-    
-    #if @status == "pending"
-      #if sender.balance >= amount
-        #sender.balance = sender.balance-amount
-       # sender.balance
-       # receiver.balance = receiver.balance+amount
-       # receiver.balance
-       # @status = "complete"
-      #elsif sender.balance < amount
-     #   return "Transaction rejected. Please check your account balance."
-     # elsif @status == "complete"
-     #   @status
-     # end
-    
-    #end
-    #if @status == "pending"
-      #if sender.balance < amount
-      #  return "Transaction rejected. Please check your account balance."
-      #elsif sender.balance > amount
-      #  sender.balance = sender.balance-amount
-       # sender.balance
-       # receiver.balance = receiver.balance+amount
-       # receiver.balance
-       # @status = "complete"
-      #end
-    #elsif @status == "complete"
-    #end
-    
   
-  
-  
-
+  def reverse_transfer
+    if self.status == "complete"
+      sender.balance += amount
+      receiver.balance -= amount
+      self.status = "reversed"
+    end
+  end
 end
