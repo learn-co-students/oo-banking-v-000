@@ -19,8 +19,9 @@ attr_accessor :amount, :status
   end
   
   def execute_transaction
-    Transfer.new(sender, receiver, amount, status)
+    #Transfer.new(sender, receiver, amount, status)
     if @status == "pending"
+     # binding.pry
       if sender.balance < amount
         "Transaction rejected. Please check your account balance."
       elsif sender.balance >= amount
