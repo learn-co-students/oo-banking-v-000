@@ -9,10 +9,12 @@ def initialize(sender, receiver, transfer)
   @transfer = transfer
   @status = "pending"
   @amount = 50
+  @broke = 0
+  @closed = "closed"
 end
 
 def valid?(transfer)
-   @status == "pending" && @amount > 0
-
+    @transfer == "open" && @amount > 0
+   transfer.valid?
 end
 end
