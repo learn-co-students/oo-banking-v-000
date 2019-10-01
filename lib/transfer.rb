@@ -13,8 +13,11 @@ def initialize(sender, receiver, transfer)
   @closed = "closed"
 end
 
-def valid?(transfer)
-    @transfer == "open" && @amount > 0
-   transfer.valid?
+def valid?
+  @sender.valid? && @receiver.valid?
 end
+#get zooom session and explain how valid? is checked
+def execute_transaction
+end
+
 end
