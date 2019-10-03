@@ -1,19 +1,19 @@
 require "pry"
 
 class Transfer
-  
+
 attr_accessor :sender, :receiver, :amount, :status, :balance
 #attr_reader :accounts
 
 def initialize(sender, receiver, amount)
-  @sender = sender 
+  @sender = sender
   @receiver = receiver
   @amount = amount
   @status = "pending"
 end
 
 def valid?
-  sender.valid? && receiver.valid? 
+  sender.valid? && receiver.valid?
 end
 
 def execute_transaction
@@ -21,20 +21,20 @@ def execute_transaction
     receiver.balance = receiver.balance + amount
     sender.balance = sender.balance - amount
     @status = "complete"
-  else 
+  else
     @status = "rejected"
     return "Transaction rejected. Please check your account balance."
     end
-    #return @status 
+    #return @status
     #binding.pry
 end
 
-def reverse_transfer 
+def reverse_transfer
   if @status == "complete"
     receiver.balance = receiver.balance - amount
     sender.balance = sender.balance + amount
     @status = "reversed"
   end
 end
-
+#adding a comment to try to get the green lights to appear on the webpage; it is not recognizing the completed pull request, so I am giving it something to change
 end
