@@ -1,5 +1,5 @@
 class Transfer
-  # your code here
+  # your code here- adding a note since this lesson didn't submit
   attr_accessor :status
   attr_reader :sender, :receiver, :amount
   
