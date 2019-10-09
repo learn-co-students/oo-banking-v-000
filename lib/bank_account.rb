@@ -1,3 +1,5 @@
+#update in class curriculm is showing I did not do this and I did.  Trying to resubmit
+
 class BankAccount
   attr_accessor :bank_account, :balance, :status
   attr_reader :name
