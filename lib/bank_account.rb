@@ -13,6 +13,10 @@ class BankAccount
     self.balance += money
   end
   
+  def withdraw(money) # I added this helper method.
+    self.balance -= money
+  end
+  
   def display_balance 
     "Your balance is $#{self.balance}."
   end
