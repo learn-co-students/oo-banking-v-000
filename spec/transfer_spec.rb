@@ -3,7 +3,6 @@ describe 'Transfer' do
 
   let(:avi) { BankAccount.new("Avi") }
   let(:amanda) { BankAccount.new("Amanda") }
-  let(:terrance) { BankAccount.new("Terrance") }
   let(:transfer) { Transfer.new(amanda, avi, 50) }
   let(:bad_transfer) { Transfer.new(amanda, avi, 4000) }
 
@@ -36,7 +35,7 @@ describe 'Transfer' do
       expect(transfer.valid?).to eq(true)
     end
 
-    it "calls on the sender and receiver's #valid? methods" do
+    it "calls on the sender and reciever's #valid? methods" do
       transfer_class = File.read("lib/transfer.rb")
 
       expect(amanda).to receive(:valid?).and_return(true)
@@ -47,11 +46,6 @@ describe 'Transfer' do
   end
 
   describe '#execute_transaction' do
-    let(:avi) { BankAccount.new("Avi") }
-    let(:amanda) { BankAccount.new("Amanda") }
-    let(:transfer) { Transfer.new(amanda, avi, 50) }
-    let(:bad_transfer) { Transfer.new(amanda, avi, 4000) }
-
     it "can execute a successful transaction between two accounts" do
       transfer.execute_transaction
       expect(amanda.balance).to eq(950)
@@ -69,12 +63,7 @@ describe 'Transfer' do
       expect(avi.balance).to eq(1050)
     end
 
-    it "rejects a transfer if the sender does not have enough funds (does not have a valid account)" do
-      terrance.close_account
-      closed_account_transfer = Transfer.new(amanda, terrance, 50)
-      expect(closed_account_transfer.execute_transaction).to eq("Transaction rejected. Please check your account balance.")
-      expect(closed_account_transfer.status).to eq("rejected")
-
+    it "rejects a transfer if the sender doesn't have a valid account" do
       expect(bad_transfer.execute_transaction).to eq("Transaction rejected. Please check your account balance.")
       expect(bad_transfer.status).to eq("rejected")
     end
