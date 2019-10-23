@@ -1,6 +1,6 @@
 require 'pry'
 
-class BankAccount
+class BankAccount 
 
   attr_accessor :balance, :status
   attr_reader :name
