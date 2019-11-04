@@ -21,10 +21,11 @@ class BankAccount
     else
       true
     end
-    
+
   end
 
   def close_account
     self.status = "closed"
   end
+  
 end
