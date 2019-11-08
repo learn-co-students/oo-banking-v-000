@@ -29,5 +29,6 @@ class BankAccount
   def close_account
     self.status = 'closed'
   end
-  
+
 end
+# this lab is not being submitted for some reason
