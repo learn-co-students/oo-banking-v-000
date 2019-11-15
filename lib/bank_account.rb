@@ -24,7 +24,7 @@ class BankAccount
     else
       true
     end
-  end
+    end
   end
   
   def close_account
