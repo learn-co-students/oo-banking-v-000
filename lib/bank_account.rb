@@ -7,7 +7,7 @@ attr_reader :name
     @balance = balance
     @status = status
     @transactions = []
-  end 
+  end  
   
   def deposit(amount)
     @balance += amount
