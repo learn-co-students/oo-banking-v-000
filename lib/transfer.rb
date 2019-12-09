@@ -1,19 +1,21 @@
 class Transfer
   attr_accessor :sender, :receiver, :amount, :status
 
-  def initialize(sender, receiver, amount)
+  def initialize(sender, receiver, amount, status = 'pending')
     @sender = sender
     @receiver = receiver
     @amount = amount
-    @status = 'pending'
+    @status = status
   end
 
   def valid?
-    if @sender.valid? && @receiver.valid? && @sender.balance >= self.amount
-      true
-    else
-      false
-    end
+    @sender.valid? && @receiver.valid? && @sender.balance >= self.amount
+    # refactored 14 - 18 to one line on 12
+    # if @sender.valid? && @receiver.valid? && @sender.balance >= self.amount
+    #   true
+    # else
+    #   false
+    # end
   end
 
   def execute_transaction
