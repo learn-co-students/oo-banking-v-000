@@ -9,6 +9,7 @@ attr_accessor :name, :balance, :status
 
   def name=(name)
     raise_error
+    
   end
 
   def deposit(number)
