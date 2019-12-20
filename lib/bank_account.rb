@@ -30,3 +30,4 @@ end
 jon = BankAccount.new('jon')
 jon.close_account
 puts jon.valid?
+
