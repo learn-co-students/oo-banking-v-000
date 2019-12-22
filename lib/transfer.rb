@@ -1,5 +1,6 @@
 class Transfer
   # your code here
+  # lab puts code in already????
   attr_reader :sender, :receiver, :status, :amount
   def initialize(sender, receiver, amount)
     @sender = sender
@@ -9,13 +10,20 @@ class Transfer
   end
   
   def valid?
-    @receiver.valid? && @sender.valid? ? true : false
+    # @receiver.valid? && @sender.valid? ? true : false
+      if @receiver.valid? && @sender.valid?
+         true
+       else
+         false
+      end
   end
   
   def execute_transaction
     if valid? && @sender.balance >= @amount && @status == "pending"
-      @sender.balance-=@amount
-      @receiver.balance+=@amount
+      # @sender.balance-=@amount
+      @sender.balance = @sender.balance - @amount
+      # @receiver.balance+=@amount
+      @receiver.balance = @receiver.balance + @amount
       @status = "complete"
     else
       @status = "rejected"
@@ -25,8 +33,10 @@ class Transfer
   
   def reverse_transfer
     if @status == "complete"
-      @receiver.balance-=@amount
-      @sender.balance+=@amount
+      # @receiver.balance-=@amount
+      @receiver.balance = @receiver.balance - @amount
+      # @sender.balance+=@amount
+      @sender.balance = @sender.balance + @amount
       @status = "reversed"
     end
   end
