@@ -14,6 +14,4 @@ Transfers start out in a "pending" status. They can be executed and go to a "com
 
 Pass the tests. They are deliberatively vague; your design is up to you! Read the test output and test files very carefully to get through this one. 
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/oo-banking' title='Object Oriented Banking'>Object Oriented Banking</a> on Learn.co and start learning to code for free.</p>
-
 <p class='util--hide'>View <a href='https://learn.co/lessons/oo-banking'>OO Banking</a> on Learn.co and start learning to code for free.</p>
