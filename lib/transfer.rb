@@ -24,6 +24,7 @@ attr_accessor :status
   end
   def reject_transfer
     self.status = "rejected"
+    #xx
     "Transaction rejected. Please check your account balance."
   end
 
