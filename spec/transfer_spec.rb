@@ -87,5 +87,6 @@ describe 'Transfer' do
         expect(avi.balance).to eq(1000)
       end
     end
+
   end
 end
