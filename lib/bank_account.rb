@@ -8,6 +8,7 @@ def initialize(name)
 @status = "open"
 end
 
+
 def deposit(deposit_amount)
 self.balance += deposit_amount
 end
