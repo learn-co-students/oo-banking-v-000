@@ -8,7 +8,7 @@ describe "BankAccount" do
         expect(avi).to be_a(BankAccount)
       end
 
-      it "initializes with a name" do
+      it "initializes with name" do
         expect(avi.name).to eq("Avi")
       end
 
