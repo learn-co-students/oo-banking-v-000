@@ -3,6 +3,7 @@ class Transfer
   attr_reader :sender, :receiver, :amount, :status
 
   def initialize(sender, receiver, amount = 50)
+    # initializing variables
     @sender = sender
     @receiver = receiver
     @amount = amount
