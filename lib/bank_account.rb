@@ -1,11 +1,13 @@
-class BankAccount
-  attr_accessor :transfer, :balance, :status
-  attr_reader :name
+require 'pry'
 
-  def initialize(name)
+class BankAccount
+  attr_reader :name
+  attr_accessor :balance, :status
+
+  def initialize(name, balance = 1000, status = 'open')
     @name = name
-    @balance = 1000
-    @status = "open"
+    @balance = balance
+    @status = status
   end
 
   def deposit(amount)
@@ -17,15 +19,10 @@ class BankAccount
   end
 
   def valid?
-    if @balance > 0 && @status == "open"
-      true
-    else
-      false
-    end
+    @status == "open" && @balance > 0
   end
 
   def close_account
-    @balance = 0
     @status = "closed"
   end
 
