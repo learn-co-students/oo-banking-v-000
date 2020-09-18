@@ -9,7 +9,7 @@ attr_reader :name
     @balance = 1000
     @status = "open"
   end
-  
+  # sdg erg 
   def deposit(amount)
    @balance += amount 
   end
