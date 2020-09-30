@@ -1,6 +1,7 @@
 class BankAccount
   attr_accessor :balance, :status
   # I suppose they want outside sources
+  #
   # to change the balance of bank accounts. Seems safe
   attr_reader :name
 
