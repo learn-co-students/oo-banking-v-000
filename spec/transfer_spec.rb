@@ -96,5 +96,6 @@ describe 'Transfer' do
       expect(amanda.balance).to eq(1000)
       expect(avi.balance).to eq(1000)
     end
+
   end
 end
