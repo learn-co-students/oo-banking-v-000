@@ -29,3 +29,5 @@ class BankAccount
   end
 
 end
+
+puts "Hello world"
