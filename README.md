@@ -1,6 +1,6 @@
 # Object Oriented Banking
 
-## Objective
+## Objective.
 
 1. Use TDD to code two classes that interact with each other. 
 
