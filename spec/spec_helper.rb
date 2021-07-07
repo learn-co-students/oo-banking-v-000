@@ -10,3 +10,4 @@ require_relative '../lib/transfer'
 RSpec.configure do |config|
   config.order = 'default'
 end
+RSpec::Expectations.configuration.warn_about_potential_false_positives = false
